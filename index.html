@@ -3,6 +3,987 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High Priestess — Wholesale Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --noir: #371F1D;
+    --smoke: #DFD8CF;
+    --portal: #C5C59F;        /* HP sage green */
+    --ash: #BE5B2C;
+    --blush: #E8D5C8;
+    --noir-light: #5a3533;
+    --smoke-dark: #b8b0a6;
+    --off-white: #f5f1ec;
+    --hp-blue: #8EA4A8;       /* Center/Unwind tin — dusty slate blue */
+    --hp-blue-deep: #5c7a80;  /* deeper variant for text/borders */
+    --hp-green: #9DA88E;      /* Uplift tin — sage green */
+    --hp-green-deep: #6b7860; /* deeper variant */
+    --hp-blue-bg: #e8eef0;    /* light blue tint for backgrounds */
+    --hp-green-bg: #eaede5;   /* light green tint for backgrounds */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--smoke);
+    color: var(--noir);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  header {
+    background: var(--noir);
+    color: var(--smoke);
+    padding: 64px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 50%, rgba(142,164,168,0.08) 100%);
+    pointer-events: none;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(142,164,168,0.4), transparent);
+  }
+
+  .header-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 32px;
+  }
+
+  .wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .wordmark-label {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    font-weight: 500;
+    color: var(--hp-blue);
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .wordmark img {
+    width: clamp(260px, 48vw, 540px);
+    height: auto;
+    display: block;
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--smoke-dark);
+    line-height: 1.9;
+  }
+
+  .header-meta strong { color: var(--smoke); font-weight: 500; }
+
+  .notice-band {
+    background: linear-gradient(90deg, #8EA4A8 0%, #a8b8bc 30%, #c5ced1 50%, #8EA4A8 70%, #9db0b4 100%);
+    color: var(--noir);
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    position: relative;
+  }
+
+  .notice-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.3) 100%);
+    pointer-events: none;
+  }
+
+  main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 64px 48px;
+    position: relative;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--hp-blue-deep);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--smoke-dark), transparent);
+  }
+
+  .hero-image {
+    width: 100%;
+    margin-bottom: 56px;
+    overflow: hidden;
+    max-height: 420px;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+
+  .strains-section { margin-bottom: 56px; }
+
+  /* ── STRAIN CARD ── */
+  .strain-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    background: var(--off-white);
+    border: 1px solid rgba(55,31,29,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+  }
+
+  .strain-card:hover { box-shadow: 0 8px 40px rgba(55,31,29,0.1); }
+
+  .strain-img {
+    width: 240px;
+    height: auto;
+    min-height: 280px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #e8e4de;
+  }
+
+  .strain-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .strain-card:hover .strain-img img { transform: scale(1.04); }
+
+  .strain-body {
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .strain-body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    height: 3px;
+    width: 100%;
+  }
+
+  .hybrid .strain-body::before { background: var(--hp-blue); }
+  .sativa .strain-body::before { background: var(--hp-green); }
+  .indica .strain-body::before { background: var(--hp-blue-deep); }
+
+  .strain-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .strain-type-badge {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .hybrid .strain-type-badge { color: var(--hp-blue-deep); }
+  .sativa .strain-type-badge { color: var(--hp-green-deep); }
+  .indica .strain-type-badge { color: var(--hp-blue-deep); }
+
+  .strain-name-large {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--noir);
+  }
+
+  .tin-name {
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 12px;
+    color: var(--smoke-dark);
+  }
+
+  /* THC badge */
+  .thc-badge {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .thc-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--noir);
+    display: block;
+  }
+
+  .thc-label {
+    font-size: 7px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--smoke-dark);
+    display: block;
+    margin-top: 3px;
+  }
+
+  .strain-descriptor {
+    font-size: 11.5px;
+    line-height: 1.75;
+    color: var(--noir-light);
+    margin-bottom: 16px;
+  }
+
+  /* terpene chips */
+  .terp-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .terp-chip {
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    background: rgba(55,31,29,0.05);
+    color: var(--noir-light);
+    font-weight: 500;
+    border: 1px solid rgba(55,31,29,0.09);
+  }
+
+  .terp-pct {
+    color: var(--ash);
+    font-weight: 600;
+  }
+
+  /* COA link strip */
+  .coa-strip {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(55,31,29,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .coa-meta {
+    font-size: 9px;
+    color: var(--smoke-dark);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+  }
+
+  .coa-meta strong {
+    color: var(--noir);
+    font-weight: 500;
+  }
+
+  .coa-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--hp-blue-deep);
+    text-decoration: none;
+    border: 1px solid var(--hp-blue);
+    padding: 7px 14px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .coa-link:hover {
+    background: var(--hp-blue-deep);
+    color: var(--off-white);
+  }
+
+  .strain-vibes {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+
+  .vibe-tag {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: rgba(55,31,29,0.06);
+    color: var(--noir-light);
+    font-weight: 500;
+  }
+
+  /* Coming soon */
+  .coming-soon-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    background: var(--noir);
+    color: var(--smoke);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .cs-img {
+    width: 240px;
+    min-height: 280px;
+    overflow: hidden;
+  }
+
+  .cs-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: brightness(0.72);
+  }
+
+  .cs-body {
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cs-badge {
+    display: inline-block;
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--portal);
+    background: rgba(197,197,159,0.1);
+    padding: 5px 12px;
+    margin-bottom: 14px;
+    width: fit-content;
+    border: 1px solid rgba(197,197,159,0.2);
+  }
+
+  .cs-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color: var(--smoke);
+  }
+
+  .cs-tin {
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--portal);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .cs-desc {
+    font-size: 12px;
+    line-height: 1.75;
+    color: rgba(223,216,207,0.65);
+  }
+
+  .cs-vibes {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .cs-vibe-tag {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid rgba(197,197,159,0.22);
+    color: var(--portal);
+    font-weight: 500;
+  }
+
+  /* Pricing */
+  .pricing-block {
+    background: var(--noir);
+    color: var(--smoke);
+    padding: 36px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    margin-bottom: 20px;
+  }
+
+  .pricing-divider {
+    background: rgba(223,216,207,0.12);
+    margin: 0 28px;
+  }
+
+  .price-item { text-align: center; padding: 8px 0; }
+
+  .price-label {
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--portal);
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .price-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .price-sub {
+    font-size: 9px;
+    color: var(--smoke-dark);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .discount-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 56px;
+  }
+
+  .discount-flag {
+    border: 1px solid var(--hp-blue);
+    padding: 18px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--hp-blue-bg);
+  }
+
+  .discount-flag .flag-mark { font-size: 16px; flex-shrink: 0; margin-top: 2px; color: var(--hp-blue-deep); }
+
+  .discount-flag .flag-text {
+    font-size: 11.5px;
+    line-height: 1.65;
+    color: var(--noir);
+  }
+
+  .discount-flag .flag-text strong {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--hp-blue-deep);
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .rule {
+    border: none;
+    border-top: 1px solid rgba(55,31,29,0.15);
+    margin: 56px 0;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+    align-items: start;
+    margin-bottom: 56px;
+  }
+
+  .brand-copy {
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--noir-light);
+  }
+
+  .brand-copy p + p { margin-top: 14px; }
+  .brand-copy strong { color: var(--noir); font-weight: 600; }
+
+  .credentials { display: flex; flex-direction: column; }
+
+  .credential-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    font-size: 10.5px;
+    line-height: 1.55;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(55,31,29,0.1);
+  }
+
+  .credential-item:last-child { border-bottom: none; }
+
+  .cred-label {
+    font-size: 8px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--hp-blue-deep);
+    padding-top: 2px;
+  }
+
+  .cred-value { color: var(--noir); }
+
+  .download-section {
+    background: var(--hp-green-bg);
+    border: 1px solid var(--hp-green);
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .download-section .dl-text {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    line-height: 1.65;
+    color: var(--noir);
+  }
+
+  .download-section .dl-text strong {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--hp-green-deep);
+    margin-bottom: 4px;
+  }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--hp-blue-deep);
+    color: var(--off-white);
+    padding: 13px 26px;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .btn-download:hover { background: var(--hp-green-deep); }
+
+  .contact-block {
+    background: linear-gradient(135deg, #2a1816 0%, #371F1D 40%, #2e1c1a 70%, #3d2220 100%);
+    color: var(--smoke);
+    padding: 52px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(200,210,215,0.6), rgba(230,235,238,0.8), rgba(200,210,215,0.6), transparent);
+  }
+
+  .contact-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .contact-title {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--hp-blue);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+
+  .contact-details { display: flex; flex-direction: column; }
+
+  .contact-line {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    font-size: 11px;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(223,216,207,0.1);
+    align-items: baseline;
+  }
+
+  .contact-line:last-child { border-bottom: none; }
+
+  .cl-label {
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--hp-blue);
+    font-weight: 500;
+  }
+
+  .contact-line a { color: var(--smoke); text-decoration: none; }
+  .contact-line a:hover { color: var(--portal); }
+
+  .contact-right { padding-top: 8px; }
+
+  .cta-note {
+    font-size: 13px;
+    line-height: 1.85;
+    color: rgba(223,216,207,0.65);
+    margin-bottom: 28px;
+  }
+
+  .cta-note strong { color: var(--smoke); font-weight: 400; }
+
+  .cta-highlight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-style: italic;
+    color: var(--hp-green);
+    line-height: 1.45;
+  }
+
+  footer {
+    background: var(--noir);
+    border-top: 1px solid rgba(223,216,207,0.08);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(223,216,207,0.5);
+    position: relative;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(142,164,168,0.4), transparent);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header { animation: fadeUp 0.5s ease both; }
+  .notice-band { animation: fadeUp 0.5s ease 0.08s both; }
+
+  @media (max-width: 760px) {
+    header, main { padding: 36px 20px; }
+    .header-inner { grid-template-columns: 1fr; }
+    .header-meta { text-align: left; }
+    .strain-card, .coming-soon-card { grid-template-columns: 1fr; }
+    .strain-img, .cs-img { width: 100%; min-height: 200px; max-height: 220px; }
+    .pricing-block { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
+    .pricing-divider { display: none; }
+    .discount-row { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; gap: 32px; }
+    .contact-block { grid-template-columns: 1fr; padding: 32px 24px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    .download-section { flex-direction: column; align-items: flex-start; }
+    .coa-strip { flex-direction: column; align-items: flex-start; }
+    .strain-top { grid-template-columns: 1fr; }
+    .thc-badge { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="wordmark">
+        <span class="wordmark-label">Wholesale Menu</span>
+        <img src="logo-white.svg" alt="High Priestess">
+      </div>
+    </div>
+    <div class="header-meta">
+      <strong>OCM-PROC-24-000215</strong><br>
+      NY Licensed Processor<br>
+      Type 1 / Tier 1<br>
+      <br>
+      Brooklyn, New York<br>
+      <strong>Spring 2026 Menu</strong>
+    </div>
+  </div>
+</header>
+
+<div class="notice-band">
+  ✦ &nbsp; 10% off all first orders — new accounts welcome &nbsp; ✦ &nbsp; COD &amp; volume discounts available &nbsp; ✦
+</div>
+
+<main>
+
+  <div class="hero-image">
+    <img src="Preroll_Tins_ALL.jpg" alt="High Priestess preroll tins — full line">
+  </div>
+
+  <div class="section-label">Current Menu — 7-Pack Preroll Tins &nbsp;·&nbsp; Whole Flower &nbsp;·&nbsp; No Shake, No Trim</div>
+
+  <div class="strains-section">
+
+    <!-- CENTER / LCG / Hybrid -->
+    <div class="strain-card hybrid">
+      <div class="strain-img">
+        <img src="Preroll_Tin_CENTER.jpg" alt="Center — Lemon Cherry Gelato">
+      </div>
+      <div class="strain-body">
+        <div class="strain-type-badge">Hybrid Cannabis Prerolls</div>
+        <div class="strain-name-large" style="font-size:42px; margin-bottom:6px;">Center</div>
+        <div style="font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:16px;">Anytime · Balanced · Present · Harmonizing</div>
+        <div class="strain-descriptor" style="display:block; font-size:12.5px; line-height:1.8; color:var(--noir-light); margin-bottom:20px;">Light this when you want to feel steady — clear in the head, easy in the body. A gentle reset. A little anchor, no weight.</div>
+        <div style="font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 4.9g total &nbsp;·&nbsp; Whole flower, no shake</div>
+        <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
+          <a class="coa-link" href="COA_Center_Hybrid.pdf" target="_blank">↓ Full COA</a>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size:13px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="strain-card sativa">
+      <div class="strain-img">
+        <img src="Preroll_Tin_UPLIFT.jpg" alt="Uplift">
+      </div>
+      <div class="strain-body">
+        <div class="strain-type-badge">Sativa Cannabis Prerolls</div>
+        <div class="strain-name-large" style="font-size:42px; margin-bottom:6px;">Uplift</div>
+        <div style="font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:16px;">Daytime · Social · Creative · Active</div>
+        <div class="strain-descriptor" style="display:block; font-size:12.5px; line-height:1.8; color:var(--noir-light); margin-bottom:20px;">Light it when you're ready to show up fully — to your body, your people, or your next great idea. A little lift, no loudness.</div>
+        <div style="font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 4.9g total &nbsp;·&nbsp; Whole flower, no shake</div>
+        <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
+          <a class="coa-link" href="COA_Uplift_Sativa.pdf" target="_blank">↓ Full COA</a>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size:13px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="strain-card indica">
+      <div class="strain-img">
+        <img src="Preroll_Tin_UNWIND.jpg" alt="Unwind — Grape Gas">
+      </div>
+      <div class="strain-body">
+        <div class="strain-type-badge">Indica Cannabis Prerolls</div>
+        <div class="strain-name-large" style="font-size:42px; margin-bottom:6px;">Unwind</div>
+        <div style="font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:16px;">Evening · Relaxing · Grounded · Intimate</div>
+        <div class="strain-descriptor" style="display:block; font-size:12.5px; line-height:1.8; color:var(--noir-light); margin-bottom:20px;">Light this for letting go — not to disassociate, but to decompress. Rest isn't an escape. It's a return. A little hush, no heaviness.</div>
+        <div style="font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 4.9g total &nbsp;·&nbsp; Whole flower, no shake</div>
+        <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
+          <a class="coa-link" href="COA_Unwind_Indica.pdf" target="_blank">↓ Full COA</a>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size:13px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="coming-soon-card">
+      <div class="cs-img">
+        <img src="Preroll_Tin_TRANSCEND.jpg" alt="Transcend — Hash Infused Prerolls">
+      </div>
+      <div class="cs-body">
+        <div class="cs-badge" style="color:var(--hp-blue); border-color:rgba(142,164,168,0.4);">Hash Infused · Solventless</div>
+        <div class="cs-name">Transcend</div>
+        <div class="cs-tin" style="margin-bottom:16px;">Introspective · Deep · Expansive</div>
+        <div class="cs-desc" style="font-size:12.5px; line-height:1.8; color:rgba(223,216,207,0.8);">For the curious ones. For journaling, tarot sessions, late nights, long thoughts. Classic flower elevated with premium solventless hash — same tin, new depth. Reach for this when you want to go somewhere.</div>
+        <div style="font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(197,197,159,0.6); font-weight:500; margin-top:16px; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 4.9g total &nbsp;·&nbsp; Whole flower + solventless hash</div>
+        <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(197,197,159,0.15);">
+          <span style="font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(197,197,159,0.5); font-weight:500;">Hash Infused</span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:400; color:var(--smoke); letter-spacing:0.02em;">$31 <span style="font-size:13px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(197,197,159,0.5);">wholesale</span></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="discount-row">
+    <div class="discount-flag">
+      <div class="flag-mark">◆</div>
+      <div class="flag-text">
+        <strong>New Account Discount</strong>
+        10% off your first order — no minimum required. A real introduction.
+      </div>
+    </div>
+    <div class="discount-flag">
+      <div class="flag-mark">◆</div>
+      <div class="flag-text">
+        <strong>Volume &amp; COD Discounts</strong>
+        Available and readily offered. Reach out to discuss what works for your store.
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- BUDTENDER SHEET -->
+  <div class="download-section">
+    <div class="dl-text">
+      <strong>Budtender Education Sheet</strong>
+      Brand story, sell scripts by customer type, objection handling, and merchandising notes.
+    </div>
+    <a class="btn-download" href="HIGH_PRIESTESS___Budtender_Sell_Sheet.pdf" target="_blank" download>↓ &nbsp; Download</a>
+  </div>
+
+  <hr class="rule">
+
+  <!-- BRAND + CREDENTIALS -->
+  <div class="section-label">About the Brand</div>
+  <div class="two-col">
+    <div class="brand-copy">
+      <p><strong>Woman-owned. Processor-owned. Solventless.</strong> High Priestess is built and operated by its founder in Brooklyn — licensed, tested, and fulfilled direct to retail with no middlemen and no compromise on process.</p>
+      <p>Every product in the line is made with whole flower and solventless extraction. No distillate. No additives. The hash in the Transcend tin is the same process as the rosin vapes coming next — ice water, heat, pressure. That's it.</p>
+      <p><strong>The line is organized by intention, not just effect:</strong> Center for balance, Uplift for energy, Unwind for release, Transcend for depth. Strain-selected to hit the experience. COA on every label. <strong>Buy weed from women.</strong></p>
+    </div>
+    <div>
+      <div class="credentials">
+        <div class="credential-item">
+          <div class="cred-label">License</div>
+          <div class="cred-value">OCM-PROC-24-000215<br>Type 1 / Tier 1 Processor</div>
+        </div>
+        <div class="credential-item">
+          <div class="cred-label">Authorized For</div>
+          <div class="cred-value">Extraction · Infusing/Blending<br>Packaging, Labeling &amp; Branding</div>
+        </div>
+        <div class="credential-item">
+          <div class="cred-label">Distribution</div>
+          <div class="cred-value">Licensed distributor · Direct-to-retail<br>Brooklyn-based fulfillment</div>
+        </div>
+        <div class="credential-item">
+          <div class="cred-label">Coming Soon</div>
+          <div class="cred-value">Rosin Vapes (Later 2026)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section-label">Place an Order</div>
+  <div class="contact-block">
+    <div>
+      <div class="contact-name">Ashley</div>
+      <div class="contact-title">Distributor &amp; Processor</div>
+      <div class="contact-details">
+        <div class="contact-line">
+          <span class="cl-label">Email</span>
+          <a href="/cdn-cgi/l/email-protection#dcb3aeb8b9aeaf9cb4b5bbb4acaeb5b9afa8b9afaff2b0b5bab9"><span class="__cf_email__" data-cfemail="b1dec3d5d4c3c2f1d9d8d6d9c1c3d8d4c2c5d4c2c29fddd8d7d4">[email&#160;protected]</span></a>
+        </div>
+        <div class="contact-line">
+          <span class="cl-label">Phone</span>
+          <a href="tel:6466480603">646 648 0603</a>
+        </div>
+        <div class="contact-line">
+          <span class="cl-label">Instagram</span>
+          <a href="https://instagram.com/highpriestess.cann" target="_blank">@highpriestess.cann</a>
+        </div>
+        <div class="contact-line">
+          <span class="cl-label">Web</span>
+          <a href="https://highpriestess.life" target="_blank">highpriestess.life</a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="cta-note">
+        In stock now: <strong>Lemon Cherry Gelato · Moroccan Peach · Grape Gas.</strong><br><br>
+        Hash-infused Transcend is available now. Rosin Vapes drop later this year.<br><br>
+        New accounts get 10% off their first order. Volume and COD terms are easy conversations — just ask.
+      </div>
+      <div class="cta-highlight">
+        <img src="secondary-logo-smoke.png" alt="High Priestess Herbal Wellness — for modern mystics" style="width:100%; max-width:340px; height:auto; opacity:0.8;">
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<footer>
+  <img src="logo-white.svg" alt="High Priestess" style="height:14px; width:auto; opacity:0.6; position:relative; z-index:1;">
+  <span style="position:relative; z-index:1;">OCM-PROC-24-000215</span>
+  <span style="position:relative; z-index:1;">highpriestess.life</span>
+</footer>
+
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HIGH PRIESTESS — Wholesale Menu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -993,4 +1974,4 @@
     </div>
   </div>
 
-</main>
+</main> -->
