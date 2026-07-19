@@ -172,6 +172,107 @@
 
   .strains-section { margin-bottom: 56px; }
 
+  .menu-subhead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--noir);
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin: 0 0 20px;
+    flex-wrap: wrap;
+  }
+ 
+  .menu-subhead .subhead-meta {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--smoke-dark);
+    font-weight: 600;
+  }
+ 
+  .singles-section { margin-bottom: 56px; }
+ 
+  .singles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+ 
+  .single-card {
+    background: var(--off-white);
+    border: 1px solid rgba(55,31,29,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s ease;
+  }
+ 
+  .single-card:hover { box-shadow: 0 8px 40px rgba(55,31,29,0.1); }
+ 
+  .single-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #e8e4de;
+  }
+ 
+  .single-card-body {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+ 
+  .single-card-badge {
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+ 
+  .single-card-badge.hybrid-badge { color: var(--hp-blue-deep); }
+  .single-card-badge.sativa-badge { color: var(--hp-green-deep); }
+  .single-card-badge.indica-badge { color: var(--hp-blue-deep); }
+ 
+  .single-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--noir);
+    line-height: 1.1;
+  }
+ 
+  .single-card-strain {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--noir-light);
+    margin-bottom: 8px;
+  }
+ 
+  .single-card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--noir);
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid rgba(55,31,29,0.1);
+  }
+ 
+  .single-card-price .unit-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--smoke-dark);
+    font-weight: 500;
+    margin-left: 4px;
+  }
+
   /* ── STRAIN CARD ── */
   .strain-card {
     display: grid;
@@ -1080,8 +1181,6 @@
     transition: background 0.2s ease;
   }
  
-  .order-cta-button:hover { background: var(--hp-green-deep); }
- 
   /* ── MODAL ── */
  
   body.order-modal-open { overflow: hidden; }
@@ -1441,6 +1540,57 @@
 
   </div>
 
+  <!-- PREROLL SINGLES SECTION -->
+
+<div class="singles-section">
+  <div class="menu-subhead">Preroll Singles <span class="subhead-meta">0.7g · Single Preroll Tubes</span></div>
+    <div class="singles-grid">
+ 
+      <div class="single-card">
+        <img src="preroll_mock_center.png" height="100%" alt="Center — Iced Cherry Lemon single preroll">
+        <div class="single-card-body">
+          <div class="single-card-badge hybrid-badge">Hybrid</div>
+          <div class="single-card-name">Center</div>
+          <div class="single-card-strain">Iced Cherry Lemon</div>
+          <div class="single-card-footer">
+            <a class="coa-link" href="COA_Center_Hybrid.pdf" target="_blank">↓ Full COA</a>
+            <br/>
+            <span class="single-card-price">$5.50 <span class="unit-label">wholesale</span></span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="single-card">
+        <img src="preroll_mock_uplift.png" alt="Uplift — Marrakech Kush single preroll">
+        <div class="single-card-body">
+          <div class="single-card-badge sativa-badge">Sativa</div>
+          <div class="single-card-name">Uplift</div>
+          <div class="single-card-strain">Marrakech Kush</div>
+          <div class="single-card-footer">
+            <a class="coa-link" href="COA_Uplift_Sativa.pdf" target="_blank">↓ Full COA</a>
+            <br/>
+            <span class="single-card-price">$5.50 <span class="unit-label">wholesale</span></span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="single-card">
+        <img src="preroll_mock_unwind.png" alt="Unwind — Runtz Raisin single preroll">
+        <div class="single-card-body">
+          <div class="single-card-badge indica-badge">Indica</div>
+      <div class="single-card-name">Unwind</div>
+      <div class="single-card-strain">Runtz Raisin</div>
+      <div class="single-card-footer">
+        <a class="coa-link" href="COA_Unwind_Indica.pdf" target="_blank">↓ Full COA</a>
+        <br/>
+        <span class="single-card-price">$5.50 <span class="unit-label">wholesale</span></span>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
   <div class="discount-row">
     <div class="discount-flag">
       <div class="flag-mark">◆</div>
@@ -1529,7 +1679,7 @@
   <div class="section-label">Place an Order</div>
   <div class="contact-block">
     <div>
-      <div class="contact-name">Contact Us</div>
+      <div class="contact-name">Contact and Order</div>
       <div class="contact-title">OCM Licensed Distributor &amp; Tier 1 Processor</div>
       <div class="contact-details">
         <div class="contact-line">
@@ -1706,7 +1856,7 @@
         </div>
  
         <div class="of-submit-row">
-          <button type="submit" class="of-submit">Submit Order</button>
+          <button type="submit" style="background-color:var(--hp-blue)" class="of-submit">Submit Order</button>
           <p class="of-status" id="wholesale-order-status" role="status" aria-live="polite"></p>
         </div>
       </form>
@@ -1826,7 +1976,7 @@
     } catch (err) {
       status.className = 'of-status error';
       status.textContent =
-        'Something went wrong: ' + err.message + ' — email orders@highpriestess.life directly so nothing is lost.';
+        'Something went wrong: ' + err.message + ' — email orders@highpriestess.life directly to confirm we have received your order request.';
     } finally {
       submitBtn.disabled = false;
     }
