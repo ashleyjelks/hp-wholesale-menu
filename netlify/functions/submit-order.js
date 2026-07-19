@@ -185,8 +185,9 @@ function extractRequestMetadata(event) {
 }
 
 function formatMetadataBlock(meta) {
+  console.log("🚀 ~ formatMetadataBlock ~ meta:", meta)
   return [
-    '— Submission metadata (not entered by buyer) —',
+    '— Submission metadata —',
     `IP: ${meta.ip}`,
     `Approx. location: ${meta.location}`,
     `Device: ${meta.deviceType} · ${meta.platform}`,
