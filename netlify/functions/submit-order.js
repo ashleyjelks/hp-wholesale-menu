@@ -8,17 +8,12 @@
 //
 
 const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN;
-<<<<<<< HEAD
-const AIRTABLE_BASE_ID = 'app7BCsAxIdqpuI5b';
-const AIRTABLE_TABLE_NAME = 'OnlineOrders';
-=======
 console.log("🚀 ~ AIRTABLE_TOKEN:", AIRTABLE_TOKEN)
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
 const AIRTABLE_TABLE_ID = process.env.AIRTABLE_TABLE_ID;
 console.log("🚀 ~ AIRTABLE_BASE_ID:", AIRTABLE_BASE_ID)
 const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_TABLE_NAME || 'OnlineOrders';
 console.log("🚀 ~ AIRTABLE_TABLE_NAME:", AIRTABLE_TABLE_NAME)
->>>>>>> 10d897b (db)
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 console.log("🚀 ~ RESEND_API_KEY:", RESEND_API_KEY)
 const FROM_EMAIL = process.env.FROM_EMAIL;
