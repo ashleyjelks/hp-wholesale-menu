@@ -39,7 +39,7 @@
     background-color: var(--smoke);
     color: var(--noir);
     font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.01em;
     overflow-x: hidden;
   }
@@ -86,7 +86,7 @@
   .wordmark-label {
     font-size: 13px;
     letter-spacing: 0.35em;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--hp-blue);
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
@@ -107,7 +107,7 @@
     line-height: 1.9;
   }
 
-  .header-meta strong { color: var(--smoke); font-weight: 500; }
+  .header-meta strong { color: var(--smoke); font-weight: 600; }
 
   .notice-band {
     background: linear-gradient(90deg, #8EA4A8 0%, #a8b8bc 30%, #c5ced1 50%, #8EA4A8 70%, #9db0b4 100%);
@@ -117,7 +117,7 @@
     font-size: 15px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     position: relative;
   }
 
@@ -140,19 +140,12 @@
     font-size: 13px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--hp-blue-deep);
     margin-bottom: 28px;
     display: flex;
     align-items: center;
     gap: 12px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--smoke-dark), transparent);
   }
 
   .hero-image {
@@ -190,15 +183,21 @@
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--smoke-dark);
-    font-weight: 600;
+    color: var(--hp-blue-deep);
+    font-weight: 700;
   }
  
   .singles-section { margin-bottom: 56px; }
  
-  .singles-grid {
+  /* .singles-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  } */
+
+  .singles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 20px;
   }
  
@@ -228,10 +227,10 @@
   }
  
   .single-card-badge {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.26em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 4px;
   }
  
@@ -242,7 +241,7 @@
   .single-card-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 28px;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--noir);
     line-height: 1.1;
   }
@@ -265,11 +264,11 @@
  
   .single-card-price .unit-label {
     font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--smoke-dark);
-    font-weight: 500;
+    font-weight: 600;
     margin-left: 4px;
   }
 
@@ -337,7 +336,7 @@
     font-size: 12px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 8px;
   }
 
@@ -348,7 +347,7 @@
   .strain-name-large {
     font-family: 'Cormorant Garamond', serif;
     font-size: 37px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.02em;
     line-height: 1.1;
     color: var(--noir);
@@ -358,7 +357,7 @@
     font-size: 13px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 5px;
     margin-bottom: 12px;
     color: var(--smoke-dark);
@@ -373,17 +372,17 @@
   .thc-number {
     font-family: 'Cormorant Garamond', serif;
     font-size: 26px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1;
     color: var(--noir);
     display: block;
   }
 
   .thc-label {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--smoke-dark);
     display: block;
     margin-top: 3px;
@@ -411,13 +410,13 @@
     padding: 4px 9px;
     background: rgba(55,31,29,0.05);
     color: var(--noir-light);
-    font-weight: 500;
+    font-weight: 600;
     border: 1px solid rgba(55,31,29,0.09);
   }
 
   .terp-pct {
     color: var(--ash);
-    font-weight: 600;
+    font-weight: 700;
   }
 
   /* COA link strip */
@@ -440,7 +439,7 @@
 
   .coa-meta strong {
     color: var(--noir);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .coa-link {
@@ -450,7 +449,7 @@
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--hp-blue-deep);
     text-decoration: none;
     border: 1px solid var(--hp-blue);
@@ -479,7 +478,7 @@
     padding: 4px 10px;
     background: rgba(55,31,29,0.06);
     color: var(--noir-light);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   /* Coming soon */
@@ -518,7 +517,7 @@
     font-size: 12px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--portal);
     background: rgba(197,197,159,0.1);
     padding: 5px 12px;
@@ -530,7 +529,7 @@
   .cs-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 39px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.03em;
     line-height: 1.1;
     margin-bottom: 8px;
@@ -542,7 +541,7 @@
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--portal);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 14px;
   }
 
@@ -566,7 +565,7 @@
     padding: 4px 10px;
     border: 1px solid rgba(197,197,159,0.22);
     color: var(--portal);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   /* Pricing */
@@ -591,7 +590,7 @@
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--portal);
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
     display: block;
   }
@@ -599,7 +598,7 @@
   .price-value {
     font-family: 'Cormorant Garamond', serif;
     font-size: 54px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1;
     letter-spacing: 0.02em;
     margin-bottom: 6px;
@@ -643,7 +642,7 @@
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--hp-blue-deep);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 5px;
   }
 
@@ -684,7 +683,7 @@
   .flyer-gallery-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 33px;
-    font-weight: 400;
+    font-weight: 500;
     font-style: italic;
     color: var(--smoke);
     letter-spacing: 0.01em;
@@ -695,13 +694,13 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--hp-blue);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .flyer-gallery-scroll {
     display: flex;
     gap: 20px;
-    overflow-x: auto;
+    overflow-y: hidden;
     padding: 4px 48px 20px;
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
@@ -754,13 +753,13 @@
   }
 
   .brand-copy {
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1.9;
     color: var(--noir-light);
   }
 
   .brand-copy p + p { margin-top: 14px; }
-  .brand-copy strong { color: var(--noir); font-weight: 600; }
+  .brand-copy strong { color: var(--noir); font-weight: 700; }
 
   .credentials { display: flex; flex-direction: column; }
 
@@ -780,12 +779,12 @@
     font-size: 12px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--hp-blue-deep);
     padding-top: 2px;
   }
 
-  .cred-value { color: var(--noir); }
+  .cred-value { color: var(--noir); font-size:  11px; }
 
   .download-section {
     background: var(--hp-green-bg);
@@ -810,7 +809,7 @@
     font-size: 13px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--hp-green-deep);
     margin-bottom: 4px;
   }
@@ -825,7 +824,7 @@
     font-size: 13px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     transition: background 0.2s;
@@ -857,9 +856,8 @@
 
   .contact-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 62px;
-    font-weight: 300;
-    letter-spacing: 0.04em;
+    font-size: 48px;
+    font-weight: 400;
     line-height: 1;
     margin-bottom: 6px;
   }
@@ -869,7 +867,7 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--hp-blue);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 28px;
   }
 
@@ -892,7 +890,7 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--hp-blue);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .contact-line a { color: var(--smoke); text-decoration: none; }
@@ -907,7 +905,7 @@
     margin-bottom: 28px;
   }
 
-  .cta-note strong { color: var(--smoke); font-weight: 400; }
+  .cta-note strong { color: var(--smoke); font-weight: 500; }
 
   .cta-highlight {
     font-family: 'Cormorant Garamond', serif;
@@ -1000,13 +998,13 @@
     font-size: 12px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--hp-blue-deep);
   }
  
   .of-label .optional-tag {
     color: var(--smoke-dark);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.1em;
     margin-left: 4px;
   }
@@ -1035,7 +1033,7 @@
     font-size: 12px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--hp-blue-deep);
     padding: 16px 0;
     border-bottom: 1px solid rgba(55,31,29,0.1);
@@ -1043,10 +1041,10 @@
  
   .oi-legend .oi-legend-sub {
     display: block;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.08em;
     text-transform: none;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--smoke-dark);
     margin-top: 4px;
   }
@@ -1062,11 +1060,30 @@
   }
  
   .oi-row:last-child { border-bottom: none; }
+
+  .oi-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .oi-thumb {
+    width: 56px;
+    height: 56px;
+    object-position: center;
+    flex-shrink: 0;
+    background: white;
+    border: 1px solid rgba(55,31,29,0.1);
+  }
+
+  .oi-thumb.thumb-contain { object-fit: contain; background: white; }
+  .oi-thumb.thumb-cover { object-fit: cover; }
  
   .oi-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: 500;
     color: var(--noir);
   }
  
@@ -1116,7 +1133,7 @@
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--portal);
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
     display: block;
   }
@@ -1124,7 +1141,7 @@
   .os-value {
     font-family: 'Cormorant Garamond', serif;
     font-size: 42px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1;
     letter-spacing: 0.02em;
   }
@@ -1141,7 +1158,7 @@
     font-size: 13px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: background 0.2s ease;
     white-space: nowrap;
@@ -1175,7 +1192,7 @@
     font-size: 14px;
     letter-spacing: 0.26em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     border: none;
     cursor: pointer;
     transition: background 0.2s ease;
@@ -1264,13 +1281,13 @@
     font-size: 12px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--hp-blue-deep);
   }
  
   .of-label .optional-tag {
     color: var(--smoke-dark);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.1em;
     margin-left: 4px;
   }
@@ -1299,7 +1316,7 @@
     font-size: 12px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--hp-blue-deep);
     padding: 16px 0;
     border-bottom: 1px solid rgba(55,31,29,0.1);
@@ -1307,10 +1324,10 @@
  
   .oi-legend .oi-legend-sub {
     display: block;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.08em;
     text-transform: none;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--smoke-dark);
     margin-top: 4px;
   }
@@ -1326,13 +1343,6 @@
   }
  
   .oi-row:last-child { border-bottom: none; }
- 
-  .oi-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--noir);
-  }
  
   .oi-price {
     font-size: 12px;
@@ -1380,7 +1390,7 @@
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--portal);
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
     display: block;
   }
@@ -1388,7 +1398,7 @@
   .os-value {
     font-family: 'Cormorant Garamond', serif;
     font-size: 42px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1;
     letter-spacing: 0.02em;
   }
@@ -1405,7 +1415,7 @@
     font-size: 13px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: background 0.2s ease;
     white-space: nowrap;
@@ -1468,7 +1478,9 @@
     <img src="Preroll_Tins_ALL.jpg" alt="High Priestess preroll tins — full line">
   </div>
 
-  <div class="section-label">Current Menu — 7-Pack Preroll Tins &nbsp;·&nbsp; Whole Flower &nbsp;·&nbsp; No Shake, No Trim</div>
+  <div class="section-label">Premium Whole Flower Prerolls</div>
+
+  <div class="menu-subhead">7 Pack Tins<span class="subhead-meta">7 x 0.7g prerolls, 5g per tin</span></div>
 
   <div class="strains-section">
 
@@ -1482,7 +1494,7 @@
         <div class="strain-name-large" style="font-size: 50px; margin-bottom:6px;">Center</div>
         <div style="font-size: 13px; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:16px;">Anytime · Balanced · Present · Harmonizing</div>
         <div class="strain-descriptor" style="display:block; line-height:1.8; color:var(--noir-light); margin-bottom:20px;">A premium hybrid your budtenders can recommend to any customer, any time of day, without hesitation. Whole flower, no shake or trim, just good prerolls, keeps return rates low and repeat buys high.</div>
-        <div style="font-size: 13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 4.9g total &nbsp;·&nbsp; Whole flower, no shake</div>
+        <div style="font-size: 13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 5g total &nbsp;·&nbsp; Whole flower, no shake</div>
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
           <a class="coa-link" href="COA_Center_Hybrid.pdf" target="_blank">↓ Full COA</a>
           <span style="font-family:'Cormorant Garamond',serif; font-size: 39px; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
@@ -1498,7 +1510,7 @@
         <div class="strain-name-large" style="font-size: 50px; margin-bottom:6px;">Uplift</div>
         <div style="font-size: 12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:16px;">Daytime · Social · Creative · Active</div>
         <div class="strain-descriptor" style="display:block; line-height:1.8; color:var(--noir-light); margin-bottom:20px;">Daytime sativa built for your functional-use customers — morning and midday traffic looking for focus over sedation. Premium prerolls, no shake or trim, just good prerolls, keeps return rates low and repeat buys high.</div>
-        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 4.9g total &nbsp;·&nbsp; Whole flower, no shake</div>
+        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 5g total &nbsp;·&nbsp; Whole flower, no shake</div>
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
           <a class="coa-link" href="COA_Uplift_Sativa.pdf" target="_blank">↓ Full COA</a>
           <span style="font-family:'Cormorant Garamond',serif; font-size: 39px; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
@@ -1514,7 +1526,7 @@
         <div class="strain-name-large" style="font-size: 50px; margin-bottom:6px;">Unwind</div>
         <div style="font-size: 12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:16px;">Evening · Relaxing · Grounded · Intimate</div>
         <div class="strain-descriptor" style="display:block; line-height:1.8; color:var(--noir-light); margin-bottom:20px;">Evening indica for your highest-frequency purchase occasion.  Premium prerolls, no shake or trim, just good prerolls, keeps return rates low and repeat buys high.</div>
-        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 4.9g total &nbsp;·&nbsp; Whole flower, no shake</div>
+        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 5g total &nbsp;·&nbsp; Whole flower, no shake</div>
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
           <a class="coa-link" href="COA_Unwind_Indica.pdf" target="_blank">↓ Full COA</a>
           <span style="font-family:'Cormorant Garamond',serif; font-size: 39px; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
@@ -1530,7 +1542,7 @@
         <div class="cs-name">Transcend</div>
         <div class="cs-tin" style="margin-bottom:16px;">Introspective · Deep · Expansive</div>
         <div class="cs-desc" style="font-size: 14px; line-height:1.8; color:rgba(223,216,207,0.92);">A premium upsell for customers already loyal to the core line — same trusted tin, hash-infused potency into premium whole flower, no shake or trim prerolls, higher price point and an even better journey.</div>
-        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(197,197,159,0.85); font-weight:500; margin-top:16px; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 4.9g total &nbsp;·&nbsp; Whole flower + solventless hash</div>
+        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(197,197,159,0.85); font-weight:500; margin-top:16px; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 5g total &nbsp;·&nbsp; Whole flower + solventless hash</div>
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(197,197,159,0.15);">
           <a class="coa-link" href="COA_Transcend_Hash_Infused.pdf" target="_blank" style="color:var(--hp-blue); border-color:var(--hp-blue);">↓ Full COA</a>
           <span style="font-family:'Cormorant Garamond',serif; font-size: 39px; font-weight:400; color:var(--smoke); letter-spacing:0.02em;">$31 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(197,197,159,0.8);">wholesale</span></span>
@@ -1543,15 +1555,17 @@
   <!-- PREROLL SINGLES SECTION -->
 
 <div class="singles-section">
-  <div class="menu-subhead">Preroll Singles <span class="subhead-meta">0.7g · Single Preroll Tubes</span></div>
+  <div class="menu-subhead">Preroll Singles - 1pk <span class="subhead-meta">1 x 0.7g preroll, 0.7g per glass tube</span></div>
     <div class="singles-grid">
  
       <div class="single-card">
-        <img src="preroll_mock_center.png" height="100%" alt="Center — Iced Cherry Lemon single preroll">
+        <div style="width: 100%; height: 100%; background-color: white; color:white;">
+        <img style="transform: scaleY(0.85);" src="preroll_mock_center.png" height="100%" alt="Center — Iced Cherry Lemon single preroll">
+        </div>
         <div class="single-card-body">
-          <div class="single-card-badge hybrid-badge">Hybrid</div>
+          <div class="single-card-badge hybrid-badge">Hybrid Cannabis Preroll</div>
           <div class="single-card-name">Center</div>
-          <div class="single-card-strain">Iced Cherry Lemon</div>
+          <div class="single-card-strain">Strain: Iced Cherry Lemon</div>
           <div class="single-card-footer">
             <a class="coa-link" href="COA_Center_Hybrid.pdf" target="_blank">↓ Full COA</a>
             <br/>
@@ -1561,11 +1575,13 @@
       </div>
  
       <div class="single-card">
-        <img src="preroll_mock_uplift.png" alt="Uplift — Marrakech Kush single preroll">
+        <div style="width: 100%; height: 100%; background-color: white; color:white;">
+          <img style="transform: scale(1.05, 0.94);" src="preroll_mock_uplift.png" alt="Uplift — Marrakech Kush single preroll">
+        </div>
         <div class="single-card-body">
-          <div class="single-card-badge sativa-badge">Sativa</div>
+          <div class="single-card-badge sativa-badge">Sativa Cannabis Preroll</div>
           <div class="single-card-name">Uplift</div>
-          <div class="single-card-strain">Marrakech Kush</div>
+          <div class="single-card-strain">Strain: Marrakech Kush</div>
           <div class="single-card-footer">
             <a class="coa-link" href="COA_Uplift_Sativa.pdf" target="_blank">↓ Full COA</a>
             <br/>
@@ -1575,11 +1591,13 @@
       </div>
  
       <div class="single-card">
-        <img src="preroll_mock_unwind.png" alt="Unwind — Runtz Raisin single preroll">
+        <div style="width: 100%; height: 100%; background-color: white; color:white;">
+          <img style=" transform: scaley(0.8);  margin: -2px 0 2px 0;" src="preroll_mock_unwind.png" alt="Unwind — Runtz Raisin single preroll">
+        </div>
         <div class="single-card-body">
-          <div class="single-card-badge indica-badge">Indica</div>
+          <div class="single-card-badge indica-badge">Indica Cannabis Preroll</div>
       <div class="single-card-name">Unwind</div>
-      <div class="single-card-strain">Runtz Raisin</div>
+      <div class="single-card-strain">Strain: Runtz Raisin</div>
       <div class="single-card-footer">
         <a class="coa-link" href="COA_Unwind_Indica.pdf" target="_blank">↓ Full COA</a>
         <br/>
@@ -1649,9 +1667,7 @@
   <div class="section-label">About the Brand</div>
   <div class="two-col">
     <div class="brand-copy">
-      <p><strong>Woman-owned. Processor-owned. Solventless.</strong> High Priestess is built and operated by its founder in Brooklyn — licensed, tested, and fulfilled direct from our distribution license and partners.</p>
-      <p>Every product in the line is made with whole flower and solventless extraction. No distillate. No solvent traces or additives.</p>
-      <p><strong>The line is organized by intention, not just effect:</strong> Center for balance, Uplift for energy, Unwind for release, Transcend for depth. Strain-selected to hit the experience. COA on every label. <strong>Buy weed from women.</strong></p>
+      <p><strong>Black woman-owned.</strong> High Priestess is built and operated by its founder in Brooklyn — licensed, tested, and fulfilled direct from our distribution license and partners.</p><strong>The line is organized by intention, not just effect:</strong> Center for balance, Uplift for energy, Unwind for release, Transcend for depth. Strain-selected to hit the experience. COA on every label. <strong>Buy weed from women.</strong></p>
     </div>
     <div>
       <div class="credentials">
@@ -1669,7 +1685,7 @@
         </div>
         <div class="credential-item">
           <div class="cred-label">Coming Soon</div>
-          <div class="cred-value">Rosin Vapes<br>0.7g Singles &amp; 2-Packs</div>
+          <div class="cred-value">Rosin Vapes<br>2-Packs</div>
         </div>
       </div>
     </div>
@@ -1679,7 +1695,7 @@
   <div class="section-label">Place an Order</div>
   <div class="contact-block">
     <div>
-      <div class="contact-name">Contact and Order</div>
+      <div class="contact-name">Order Online or Contact Us</div>
       <div class="contact-title">OCM Licensed Distributor &amp; Tier 1 Processor</div>
       <div class="contact-details">
         <div class="contact-line">
@@ -1691,10 +1707,6 @@
             </span>
           </a>
 
-        </div>
-        <div class="contact-line">
-          <span class="cl-label">Phone</span>
-          <a href="tel:6466480603">646 648 0603</a>
         </div>
         <div class="contact-line">
           <span class="cl-label">Instagram</span>
@@ -1712,8 +1724,8 @@
     <div class="contact-right">
       <div class="cta-note">
         Current Strains: &nbsp; <strong>Iced Cherry Lemon ✦ Marrakech Kush ✦ Runtz Raisin.</strong><br><br>
-        Hash-infused Transcend is available now. Rosin Vapes and 1pk and 2pk prerolls drop soon.<br><br>
-        New accounts get 5% off their first order. As a Tier 1 processor we have much more flexibility on our margins. Volume and COD terms are easy conversations — just ask. 
+        Hash-infused Transcend is available now. Rosin Vapes and 2pk prerolls drop soon.<br><br>
+        New accounts get 5% off their first order. As a Tier 1 processor we have much more flexibility on our margins. Volume and COD terms are easy conversations — just ask. We also offer half-case sizes, reach out for more details. 
       </div>
       <div class="cta-highlight">
         <img src="secondary-logo-smoke.png" alt="High Priestess Herbal Wellness — for modern mystics" style="width:100%; max-width:340px; height:auto; opacity:0.8;">
@@ -1759,10 +1771,13 @@
         </div>
  
         <div class="order-items">
-          <div class="oi-legend">Preroll Tins<span class="oi-legend-sub">7 × 0.7g · Case of 32</span></div>
+          <div class="oi-legend">7 Pack Preroll Tins<span class="oi-legend-sub">7 x 0.7g prerolls · 5g/unit</span><span class="oi-legend-sub">Case of 32 units</span></div>
  
           <div class="oi-row">
-            <div><span class="oi-name">Center</span><span class="oi-price">$25.00 / unit</span></div>
+            <div class="oi-info">
+              <img class="oi-thumb thumb-cover" src="Preroll_Tin_CENTER.jpg" alt="Center tin">
+              <div><span class="oi-name">Center</span><span class="oi-price">$25.00 / unit</span></div>
+            </div>
             <div class="oi-control">
               <select class="oi-select" data-key="Center_Tin">
                 <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
@@ -1772,7 +1787,10 @@
           </div>
  
           <div class="oi-row">
-            <div><span class="oi-name">Uplift</span><span class="oi-price">$25.00 / unit</span></div>
+            <div class="oi-info">
+              <img class="oi-thumb thumb-cover" src="Preroll_Tin_UPLIFT.jpg" alt="Uplift tin">
+              <div><span class="oi-name">Uplift</span><span class="oi-price">$25.00 / unit</span></div>
+            </div>
             <div class="oi-control">
               <select class="oi-select" data-key="Uplift_Tin">
                 <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
@@ -1782,7 +1800,10 @@
           </div>
  
           <div class="oi-row">
-            <div><span class="oi-name">Unwind</span><span class="oi-price">$25.00 / unit</span></div>
+            <div class="oi-info">
+              <img class="oi-thumb thumb-cover" src="Preroll_Tin_UNWIND.jpg" alt="Unwind tin">
+              <div><span class="oi-name">Unwind</span><span class="oi-price">$25.00 / unit</span></div>
+            </div>
             <div class="oi-control">
               <select class="oi-select" data-key="Unwind_Tin">
                 <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
@@ -1792,7 +1813,10 @@
           </div>
  
           <div class="oi-row">
-            <div><span class="oi-name">Transcend</span><span class="oi-price">$31.00 / unit</span></div>
+            <div class="oi-info">
+              <img class="oi-thumb thumb-cover" src="Preroll_Tin_TRANSCEND.jpg" alt="Transcend tin">
+              <div><span class="oi-name">Transcend</span><span class="oi-price">$31.00 / unit</span></div>
+            </div>
             <div class="oi-control">
               <select class="oi-select" data-key="Transcend_Tin">
                 <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
@@ -1803,10 +1827,13 @@
         </div>
  
         <div class="order-items">
-          <div class="oi-legend">Preroll Singles<span class="oi-legend-sub">Case of 32</span></div>
- 
+          <div class="oi-legend">Preroll Singles<span class="oi-legend-sub">1 x 0.7g preroll · 0.7g/unit</span><span class="oi-legend-sub">Case of 32 units</span></div>
+
           <div class="oi-row">
-            <div><span class="oi-name">Center</span><span class="oi-price">$5.50 / unit</span></div>
+            <div class="oi-info">
+              <img class="oi-thumb thumb-contain" src="preroll_mock_center.png" alt="Center single">
+              <div><span class="oi-name">Center</span><span class="oi-price">$5.50 / unit</span></div>
+            </div>
             <div class="oi-control">
               <select class="oi-select" data-key="Center_Singles">
                 <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
@@ -1816,7 +1843,10 @@
           </div>
  
           <div class="oi-row">
-            <div><span class="oi-name">Uplift</span><span class="oi-price">$5.50 / unit</span></div>
+            <div class="oi-info">
+              <img class="oi-thumb thumb-contain" src="preroll_mock_uplift.png" alt="Uplift single">
+              <div><span class="oi-name">Uplift</span><span class="oi-price">$5.50 / unit</span></div>
+            </div>
             <div class="oi-control">
               <select class="oi-select" data-key="Uplift_Singles">
                 <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
@@ -1826,7 +1856,10 @@
           </div>
  
           <div class="oi-row">
-            <div><span class="oi-name">Unwind</span><span class="oi-price">$5.50 / unit</span></div>
+            <div class="oi-info">
+              <img class="oi-thumb thumb-contain" src="preroll_mock_unwind.png" alt="Unwind single">
+              <div><span class="oi-name">Unwind</span><span class="oi-price">$5.50 / unit</span></div>
+            </div>
             <div class="oi-control">
               <select class="oi-select" data-key="Unwind_Singles">
                 <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
