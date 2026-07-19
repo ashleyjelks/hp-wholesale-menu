@@ -172,7 +172,9 @@ async function writeToAirtable(order) {
     throw new Error('Airtable is not configured (missing AIRTABLE_TOKEN or AIRTABLE_BASE_ID)');
   }
 
-  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE_NAME)}`;
+  
+
+  const url = `https://airtable.com/app7BCsAxIdqpuI5b/tblPxph1z02C0es65`;
   const res = await fetch(url, {
     method: 'POST',
     headers: {
