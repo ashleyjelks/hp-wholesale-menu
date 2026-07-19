@@ -102,6 +102,12 @@ exports.handler = async (event) => {
     submittedAt,
   };
 
+  // --- Fold request metadata into Notes (no new Airtable field needed) ---
+  const metadata = extractRequestMetadata(event);
+  const metadataBlock = formatMetadataBlock(metadata);
+  order.notes = order.notes ? `${order.notes}\n\n${metadataBlock}` : metadataBlock;
+
+
   // --- Step 1: write to Airtable. This is the record of truth — if this fails, the order fails. ---
   let airtableRecordId;
   try {
@@ -142,6 +148,54 @@ exports.handler = async (event) => {
     recordId: airtableRecordId,
   });
 };
+
+// --- Request metadata (anti-abuse / threat context) ---
+//
+// Pulled entirely from headers Netlify already attaches to every request —
+// no client-side fingerprinting script, nothing beyond what any server
+// naturally sees. IP and geo are approximate (city-level via Netlify's edge,
+// not precise location); user-agent is self-reported by the browser and can
+// be spoofed, but is still useful signal in aggregate (repeated identical
+// UA + rapid submissions = likely a bot, not a real buyer).
+function extractRequestMetadata(event) {
+  const headers = event.headers || {};
+
+  const ip = headers['x-nf-client-connection-ip'] || headers['x-forwarded-for'] || 'unknown';
+  const userAgent = headers['user-agent'] || 'unknown';
+  const referer = headers['referer'] || 'unknown';
+  const acceptLanguage = headers['accept-language'] || 'unknown';
+  const requestId = headers['x-nf-request-id'] || 'unknown';
+
+  const platformRaw = headers['sec-ch-ua-platform'] || '';
+  const platform = platformRaw.replace(/"/g, '') || 'unknown';
+  const deviceType = headers['sec-ch-ua-mobile'] === '?1' ? 'mobile' : headers['sec-ch-ua-mobile'] === '?0' ? 'desktop' : 'unknown';
+
+  let location = 'unknown';
+  try {
+    if (headers['x-nf-geo']) {
+      const geo = JSON.parse(Buffer.from(headers['x-nf-geo'], 'base64').toString('utf8'));
+      const parts = [geo.city, geo.subdivision && geo.subdivision.name, geo.country && geo.country.name].filter(Boolean);
+      if (parts.length) location = parts.join(', ');
+    }
+  } catch (_) {
+    location = 'unknown';
+  }
+
+  return { ip, userAgent, referer, acceptLanguage, requestId, platform, deviceType, location };
+}
+
+function formatMetadataBlock(meta) {
+  return [
+    '— Submission metadata (not entered by buyer) —',
+    `IP: ${meta.ip}`,
+    `Approx. location: ${meta.location}`,
+    `Device: ${meta.deviceType} · ${meta.platform}`,
+    `Browser: ${meta.userAgent}`,
+    `Language: ${meta.acceptLanguage}`,
+    `Referrer: ${meta.referer}`,
+    `Netlify request ID: ${meta.requestId}`,
+  ].join('\n');
+}
 
 function formatUSD(n) {
   return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
