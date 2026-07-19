@@ -44,7 +44,7 @@ exports.handler = async (event) => {
   }
 
   // --- Server-side validation — everything required except deliveryHours and notes ---
-  const requiredFields = ['dispensaryName', 'dispensaryLicense', 'dispensaryAddress', 'buyerName', 'buyerEmail', 'buyerPhone'];
+  const requiredFields = ['dispensaryName', 'dispensaryLicense', 'buyerName', 'buyerEmail', 'buyerPhone'];
   const missing = requiredFields.filter((f) => !data[f] || String(data[f]).trim() === '');
   if (missing.length) {
     return jsonResponse(400, { error: `Missing required field(s): ${missing.join(', ')}` });
@@ -185,7 +185,6 @@ function extractRequestMetadata(event) {
 }
 
 function formatMetadataBlock(meta) {
-  console.log("🚀 ~ formatMetadataBlock ~ meta:", meta)
   return [
     '— Submission metadata —',
     `IP: ${meta.ip}`,
