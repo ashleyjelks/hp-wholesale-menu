@@ -8,18 +8,12 @@
 //
 
 const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN;
-console.log("🚀 ~ AIRTABLE_TOKEN:", AIRTABLE_TOKEN)
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
 const AIRTABLE_TABLE_ID = process.env.AIRTABLE_TABLE_ID;
-console.log("🚀 ~ AIRTABLE_BASE_ID:", AIRTABLE_BASE_ID)
 const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_TABLE_NAME || 'OnlineOrders';
-console.log("🚀 ~ AIRTABLE_TABLE_NAME:", AIRTABLE_TABLE_NAME)
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-console.log("🚀 ~ RESEND_API_KEY:", RESEND_API_KEY)
-const FROM_EMAIL = process.env.FROM_EMAIL;
-console.log("🚀 ~ FROM_EMAIL:", FROM_EMAIL)
-const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL;
-console.log("🚀 ~ NOTIFY_EMAIL:", NOTIFY_EMAIL)
+const FROM_EMAIL = 'orders@highpriestessherbalwellness.com';
+const NOTIFY_EMAIL = 'ashley@highpriestessherbalwellness.com';
 // const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
 // Source of truth for pricing/case size — the front-end has its own copy for
@@ -38,7 +32,6 @@ const PRODUCTS = {
 const COD_DISCOUNT_RATE = 0.10;
 
 exports.handler = async (event) => {
-  console.log("🚀 ~ event:", event)
   if (event.httpMethod !== 'POST') {
     return jsonResponse(405, { error: 'Method not allowed' });
   }
