@@ -8,11 +8,17 @@
 //
 
 const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN;
+console.log("🚀 ~ AIRTABLE_TOKEN:", AIRTABLE_TOKEN)
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
+console.log("🚀 ~ AIRTABLE_BASE_ID:", AIRTABLE_BASE_ID)
 const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_TABLE_NAME || 'OnlineOrders';
+console.log("🚀 ~ AIRTABLE_TABLE_NAME:", AIRTABLE_TABLE_NAME)
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
+console.log("🚀 ~ RESEND_API_KEY:", RESEND_API_KEY)
 const FROM_EMAIL = process.env.FROM_EMAIL;
+console.log("🚀 ~ FROM_EMAIL:", FROM_EMAIL)
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL;
+console.log("🚀 ~ NOTIFY_EMAIL:", NOTIFY_EMAIL)
 // const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
 // Source of truth for pricing/case size — the front-end has its own copy for
@@ -31,6 +37,7 @@ const PRODUCTS = {
 const COD_DISCOUNT_RATE = 0.10;
 
 exports.handler = async (event) => {
+  console.log("🚀 ~ event:", event)
   if (event.httpMethod !== 'POST') {
     return jsonResponse(405, { error: 'Method not allowed' });
   }
@@ -114,9 +121,9 @@ exports.handler = async (event) => {
     airtableRecordId = await writeToAirtable(order);
   } catch (err) {
     console.error('AIRTABLE WRITE FAILED', err, JSON.stringify(order));
-    await bestEffortSlackAlert(
-      `🚨 ORDER FAILED TO SAVE (Airtable error)\nDispensary: ${order.dispensaryName}\nBuyer: ${order.buyerName} (${order.buyerEmail})\nLicense: ${order.dispensaryLicense}\nError: ${err.message}\nCheck Netlify function logs.`
-    );
+    // await bestEffortSlackAlert(
+    //   `🚨 ORDER FAILED TO SAVE (Airtable error)\nDispensary: ${order.dispensaryName}\nBuyer: ${order.buyerName} (${order.buyerEmail})\nLicense: ${order.dispensaryLicense}\nError: ${err.message}\nCheck Netlify function logs.`
+    // );
     return jsonResponse(502, {
       error: 'Something went wrong saving your order. Please email orders@highpriestess.life directly so nothing is lost.',
     });
@@ -131,11 +138,11 @@ exports.handler = async (event) => {
     notificationErrors.push(`email: ${err.message}`);
   }
 
-  try {
-    await sendSlackNotification(order);
-  } catch (err) {
-    notificationErrors.push(`slack: ${err.message}`);
-  }
+  // try {
+  //   await sendSlackNotification(order);
+  // } catch (err) {
+  //   notificationErrors.push(`slack: ${err.message}`);
+  // }
 
   if (notificationErrors.length) {
     console.error('Order saved but notification(s) failed:', notificationErrors.join(' | '), '| recordId:', airtableRecordId);
@@ -241,31 +248,7 @@ async function sendEmailNotification(order) {
 }
 
 async function sendSlackNotification(order) {
-  if (!SLACK_WEBHOOK_URL) return;
-
-  const res = await fetch(SLACK_WEBHOOK_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      text: `🌿 New wholesale order — *${order.dispensaryName}*\n${order.summaryLine}\nTotal units: ${order.totalUnits} · COD total (10% off): ${formatUSD(order.codTotal)}\nBuyer: ${order.buyerName} · ${order.buyerEmail} · ${order.buyerPhone}`,
-    }),
-  });
-
-  if (!res.ok) {
-    const errBody = await res.text();
-    throw new Error(`Slack ${res.status}: ${errBody}`);
-  }
 }
 
 async function bestEffortSlackAlert(text) {
-  if (!SLACK_WEBHOOK_URL) return;
-  try {
-    await fetch(SLACK_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text }),
-    });
-  } catch (_) {
-    // last resort — nothing more to do from here
-  }
 }
