@@ -863,6 +863,471 @@
     .strain-top { grid-template-columns: 1fr; }
     .thc-badge { text-align: left; }
   }
+
+  order-form-card {
+    background: var(--off-white);
+    border: 1px solid rgba(55,31,29,0.1);
+    padding: 40px 44px;
+    margin-bottom: 56px;
+  }
+ 
+  .order-form-card input,
+  .order-form-card textarea,
+  .order-form-card select,
+  .order-form-card button {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: var(--noir);
+    border: none;
+    outline: none;
+    background: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+ 
+  .order-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 24px;
+    margin-bottom: 30px;
+  }
+ 
+  .of-field { display: flex; flex-direction: column; gap: 8px; }
+  .of-field.full { grid-column: 1 / -1; }
+ 
+  .of-label {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--hp-blue-deep);
+  }
+ 
+  .of-label .optional-tag {
+    color: var(--smoke-dark);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-left: 4px;
+  }
+ 
+  .of-field input,
+  .of-field textarea {
+    background: var(--smoke);
+    border: 1px solid rgba(55,31,29,0.15);
+    padding: 12px 14px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+ 
+  .of-field textarea { resize: vertical; min-height: 64px; font-family: 'Montserrat', sans-serif; }
+ 
+  .of-field input:focus,
+  .of-field textarea:focus {
+    border-color: var(--hp-blue-deep);
+    background: #fff;
+  }
+ 
+  .of-field input::placeholder { color: var(--smoke-dark); opacity: 0.8; }
+ 
+  .order-items { border: 1px solid rgba(55,31,29,0.1); padding: 8px 28px; margin-bottom: 24px; }
+ 
+  .oi-legend {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--hp-blue-deep);
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(55,31,29,0.1);
+  }
+ 
+  .oi-legend .oi-legend-sub {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    font-weight: 500;
+    color: var(--smoke-dark);
+    margin-top: 4px;
+  }
+ 
+  .oi-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(55,31,29,0.1);
+  }
+ 
+  .oi-row:last-child { border-bottom: none; }
+ 
+  .oi-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--noir);
+  }
+ 
+  .oi-price {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--smoke-dark);
+    margin-left: 10px;
+  }
+ 
+  .oi-control { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+ 
+  .oi-select {
+    width: 64px;
+    text-align: center;
+    background: var(--smoke);
+    border: 1px solid rgba(55,31,29,0.15);
+    padding: 9px 6px;
+  }
+ 
+  .oi-select:focus { border-color: var(--hp-blue-deep); background: #fff; }
+ 
+  .oi-meta {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--smoke-dark);
+    white-space: nowrap;
+    min-width: 150px;
+  }
+ 
+  .order-summary {
+    background: var(--noir);
+    color: var(--smoke);
+    padding: 32px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    margin-bottom: 30px;
+  }
+ 
+  .order-summary-divider { background: rgba(223,216,207,0.12); margin: 0 28px; }
+ 
+  .os-item { text-align: center; padding: 8px 0; }
+ 
+  .os-label {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--portal);
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+  }
+ 
+  .os-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+ 
+  .of-submit-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+ 
+  .of-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--hp-blue-deep);
+    color: var(--off-white);
+    padding: 14px 32px;
+    font-size: 13px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+  }
+ 
+  .of-submit:hover { background: var(--hp-green-deep); }
+  .of-submit:disabled { opacity: 0.6; cursor: default; }
+ 
+  .of-status { font-size: 13px; letter-spacing: 0.04em; line-height: 1.6; }
+  .of-status.success { color: var(--hp-green-deep); }
+  .of-status.error { color: var(--ash); }
+ 
+  @media (max-width: 760px) {
+    .order-form-card { padding: 32px 24px; }
+    .order-form-grid { grid-template-columns: 1fr; }
+    .order-summary { grid-template-columns: 1fr; gap: 20px; }
+    .order-summary-divider { display: none; }
+    .oi-row { flex-direction: column; align-items: flex-start; }
+  }
+
+  .contact-order-cta { margin-top: 32px; }
+ 
+  .order-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--hp-blue-deep);
+    color: var(--off-white);
+    padding: 18px 44px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+ 
+  .order-cta-button:hover { background: var(--hp-green-deep); }
+ 
+  /* ── MODAL ── */
+ 
+  body.order-modal-open { overflow: hidden; }
+ 
+  .order-modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(55,31,29,0.78);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+ 
+  .order-modal-backdrop.open { display: flex; }
+ 
+  .order-modal {
+    background: var(--off-white);
+    width: 100%;
+    max-width: 760px;
+    max-height: 90vh;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+  }
+ 
+  .order-modal-scroll {
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 48px 44px;
+  }
+ 
+  .order-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    background: var(--noir);
+    color: var(--smoke);
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+ 
+  .order-modal-close:hover { background: var(--hp-blue-deep); }
+ 
+  /* ── ORDER FORM (inside the modal) ── */
+ 
+  .order-modal input,
+  .order-modal textarea,
+  .order-modal select,
+  .order-modal button {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: var(--noir);
+    border: none;
+    outline: none;
+    background: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+ 
+  .order-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 24px;
+    margin-bottom: 30px;
+  }
+ 
+  .of-field { display: flex; flex-direction: column; gap: 8px; }
+  .of-field.full { grid-column: 1 / -1; }
+ 
+  .of-label {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--hp-blue-deep);
+  }
+ 
+  .of-label .optional-tag {
+    color: var(--smoke-dark);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-left: 4px;
+  }
+ 
+  .of-field input,
+  .of-field textarea {
+    background: var(--smoke);
+    border: 1px solid rgba(55,31,29,0.15);
+    padding: 12px 14px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+ 
+  .of-field textarea { resize: vertical; min-height: 64px; font-family: 'Montserrat', sans-serif; }
+ 
+  .of-field input:focus,
+  .of-field textarea:focus {
+    border-color: var(--hp-blue-deep);
+    background: #fff;
+  }
+ 
+  .of-field input::placeholder { color: var(--smoke-dark); opacity: 0.8; }
+ 
+  .order-items { border: 1px solid rgba(55,31,29,0.1); padding: 8px 28px; margin-bottom: 24px; }
+ 
+  .oi-legend {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--hp-blue-deep);
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(55,31,29,0.1);
+  }
+ 
+  .oi-legend .oi-legend-sub {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    font-weight: 500;
+    color: var(--smoke-dark);
+    margin-top: 4px;
+  }
+ 
+  .oi-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(55,31,29,0.1);
+  }
+ 
+  .oi-row:last-child { border-bottom: none; }
+ 
+  .oi-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--noir);
+  }
+ 
+  .oi-price {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--smoke-dark);
+    margin-left: 10px;
+  }
+ 
+  .oi-control { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+ 
+  .oi-select {
+    width: 64px;
+    text-align: center;
+    background: var(--smoke);
+    border: 1px solid rgba(55,31,29,0.15);
+    padding: 9px 6px;
+  }
+ 
+  .oi-select:focus { border-color: var(--hp-blue-deep); background: #fff; }
+ 
+  .oi-meta {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--smoke-dark);
+    white-space: nowrap;
+    min-width: 150px;
+  }
+ 
+  .order-summary {
+    background: var(--noir);
+    color: var(--smoke);
+    padding: 32px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    margin-bottom: 30px;
+  }
+ 
+  .order-summary-divider { background: rgba(223,216,207,0.12); margin: 0 28px; }
+ 
+  .os-item { text-align: center; padding: 8px 0; }
+ 
+  .os-label {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--portal);
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+  }
+ 
+  .os-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+ 
+  .of-submit-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+ 
+  .of-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--hp-blue-deep);
+    color: var(--off-white);
+    padding: 14px 32px;
+    font-size: 13px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+  }
+ 
+  .of-submit:hover { background: var(--hp-green-deep); }
+  .of-submit:disabled { opacity: 0.6; cursor: default; }
+ 
+  .of-status { font-size: 13px; letter-spacing: 0.04em; line-height: 1.6; }
+  .of-status.success { color: var(--hp-green-deep); }
+  .of-status.error { color: var(--ash); }
+ 
+  @media (max-width: 760px) {
+    .order-modal-scroll { padding: 40px 24px; }
+    .order-form-grid { grid-template-columns: 1fr; }
+    .order-summary { grid-template-columns: 1fr; gap: 20px; padding: 28px 24px; }
+    .order-summary-divider { display: none; }
+    .oi-row { flex-direction: column; align-items: flex-start; }
+    .order-cta-button { padding: 16px 32px; font-size: 13px; }
+  }
+
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0WHRS207E"></script>
@@ -1089,6 +1554,9 @@
           <span class="cl-label">Web</span>
           <a href="https://highpriestess.life" target="_blank">highpriestess.life</a>
         </div>
+        <div class="contact-order-cta">
+          <button type="button" id="open-order-modal" class="order-cta-button">Submit an Order</button>
+        </div>
       </div>
     </div>
     <div class="contact-right">
@@ -1102,7 +1570,268 @@
       </div>
     </div>
   </div>
-
+<div class="order-modal-backdrop" id="order-modal-backdrop">
+  <div class="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
+    <button type="button" class="order-modal-close" id="order-modal-close" aria-label="Close">×</button>
+    <div class="order-modal-scroll">
+      <div class="section-label" id="order-modal-title">Submit an Order</div>
+ 
+      <form id="wholesale-order-form">
+        <div class="order-form-grid">
+          <div class="of-field">
+            <span class="of-label">Dispensary Name</span>
+            <input type="text" name="dispensaryName" required>
+          </div>
+          <div class="of-field">
+            <span class="of-label">Dispensary License Number</span>
+            <input type="text" name="dispensaryLicense" placeholder="OCM-DIST-25-000191" required>
+          </div>
+          <div class="of-field">
+            <span class="of-label">Buyer Name</span>
+            <input type="text" name="buyerName" required>
+          </div>
+          <div class="of-field">
+            <span class="of-label">Buyer Email</span>
+            <input type="email" name="buyerEmail" required>
+          </div>
+          <div class="of-field">
+            <span class="of-label">Buyer Phone</span>
+            <input type="tel" name="buyerPhone" required>
+          </div>
+          <div class="of-field full">
+            <span class="of-label">Dispensary Address</span>
+            <textarea name="dispensaryAddress" required></textarea>
+          </div>
+          <div class="of-field full">
+            <span class="of-label">Delivery Days / Hours<span class="optional-tag">(Optional)</span></span>
+            <input type="text" name="deliveryHours" placeholder="e.g. Mon–Fri, 9am–5pm">
+          </div>
+        </div>
+ 
+        <div class="order-items">
+          <div class="oi-legend">Preroll Tins<span class="oi-legend-sub">7 × 0.7g · Case of 32</span></div>
+ 
+          <div class="oi-row">
+            <div><span class="oi-name">Center</span><span class="oi-price">$25.00 / unit</span></div>
+            <div class="oi-control">
+              <select class="oi-select" data-key="Center_Tin">
+                <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              </select>
+              <span class="oi-meta" data-meta="Center_Tin">0 units · $0.00</span>
+            </div>
+          </div>
+ 
+          <div class="oi-row">
+            <div><span class="oi-name">Uplift</span><span class="oi-price">$25.00 / unit</span></div>
+            <div class="oi-control">
+              <select class="oi-select" data-key="Uplift_Tin">
+                <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              </select>
+              <span class="oi-meta" data-meta="Uplift_Tin">0 units · $0.00</span>
+            </div>
+          </div>
+ 
+          <div class="oi-row">
+            <div><span class="oi-name">Unwind</span><span class="oi-price">$25.00 / unit</span></div>
+            <div class="oi-control">
+              <select class="oi-select" data-key="Unwind_Tin">
+                <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              </select>
+              <span class="oi-meta" data-meta="Unwind_Tin">0 units · $0.00</span>
+            </div>
+          </div>
+ 
+          <div class="oi-row">
+            <div><span class="oi-name">Transcend</span><span class="oi-price">$31.00 / unit</span></div>
+            <div class="oi-control">
+              <select class="oi-select" data-key="Transcend_Tin">
+                <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              </select>
+              <span class="oi-meta" data-meta="Transcend_Tin">0 units · $0.00</span>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="order-items">
+          <div class="oi-legend">Preroll Singles<span class="oi-legend-sub">Case of 32 · not yet available in Transcend</span></div>
+ 
+          <div class="oi-row">
+            <div><span class="oi-name">Center</span><span class="oi-price">$5.50 / unit</span></div>
+            <div class="oi-control">
+              <select class="oi-select" data-key="Center_Singles">
+                <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              </select>
+              <span class="oi-meta" data-meta="Center_Singles">0 units · $0.00</span>
+            </div>
+          </div>
+ 
+          <div class="oi-row">
+            <div><span class="oi-name">Uplift</span><span class="oi-price">$5.50 / unit</span></div>
+            <div class="oi-control">
+              <select class="oi-select" data-key="Uplift_Singles">
+                <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              </select>
+              <span class="oi-meta" data-meta="Uplift_Singles">0 units · $0.00</span>
+            </div>
+          </div>
+ 
+          <div class="oi-row">
+            <div><span class="oi-name">Unwind</span><span class="oi-price">$5.50 / unit</span></div>
+            <div class="oi-control">
+              <select class="oi-select" data-key="Unwind_Singles">
+                <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              </select>
+              <span class="oi-meta" data-meta="Unwind_Singles">0 units · $0.00</span>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="order-summary">
+          <div class="os-item">
+            <span class="os-label">Subtotal (Pre-Tax)</span>
+            <span class="os-value" id="os-subtotal">$0.00</span>
+          </div>
+          <div class="order-summary-divider"></div>
+          <div class="os-item">
+            <span class="os-label">COD Total (10% Discount)</span>
+            <span class="os-value" id="os-cod-total">$0.00</span>
+          </div>
+        </div>
+ 
+        <div class="of-field full" style="margin-bottom: 24px;">
+          <span class="of-label">Notes<span class="optional-tag">(Optional)</span></span>
+          <textarea name="notes"></textarea>
+        </div>
+ 
+        <div class="of-submit-row">
+          <button type="submit" class="of-submit">Submit Order</button>
+          <p class="of-status" id="wholesale-order-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+ 
+<script>
+(function () {
+  const backdrop = document.getElementById('order-modal-backdrop');
+  const openBtn = document.getElementById('open-order-modal');
+  const closeBtn = document.getElementById('order-modal-close');
+  const form = document.getElementById('wholesale-order-form');
+  const status = document.getElementById('wholesale-order-status');
+  const submitBtn = form.querySelector('.of-submit');
+ 
+  // ── modal open/close ──
+  function openModal() {
+    backdrop.classList.add('open');
+    document.body.classList.add('order-modal-open');
+    closeBtn.focus();
+  }
+  function closeModal() {
+    backdrop.classList.remove('open');
+    document.body.classList.remove('order-modal-open');
+    openBtn.focus();
+  }
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', function (e) {
+    if (e.target === backdrop) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
+  });
+ 
+  // ── pricing / live totals ──
+  // Must mirror the PRODUCTS table in netlify/functions/submit-order.js —
+  // this copy only drives the live preview; the server recomputes independently.
+  const PRODUCTS = {
+    Center_Tin:      { unitPrice: 25.00, caseSize: 32 },
+    Center_Singles:  { unitPrice: 5.50,  caseSize: 32 },
+    Uplift_Tin:      { unitPrice: 25.00, caseSize: 32 },
+    Uplift_Singles:  { unitPrice: 5.50,  caseSize: 32 },
+    Unwind_Tin:      { unitPrice: 25.00, caseSize: 32 },
+    Unwind_Singles:  { unitPrice: 5.50,  caseSize: 32 },
+    Transcend_Tin:   { unitPrice: 31.00, caseSize: 32 },
+  };
+ 
+  function formatUSD(n) {
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+ 
+  function recalc() {
+    let subtotal = 0;
+    Object.keys(PRODUCTS).forEach(function (key) {
+      const select = form.querySelector('[data-key="' + key + '"]');
+      const qty = Number(select.value) || 0;
+      const p = PRODUCTS[key];
+      const units = qty * p.caseSize;
+      const lineTotal = units * p.unitPrice;
+      subtotal += lineTotal;
+      const meta = form.querySelector('[data-meta="' + key + '"]');
+      meta.textContent = units + ' units · ' + formatUSD(lineTotal);
+    });
+    document.getElementById('os-subtotal').textContent = formatUSD(subtotal);
+    document.getElementById('os-cod-total').textContent = formatUSD(subtotal * 0.90);
+  }
+ 
+  form.addEventListener('change', function (e) {
+    if (e.target.matches('.oi-select')) recalc();
+  });
+ 
+  recalc();
+ 
+  // ── submit ──
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    status.className = 'of-status';
+    status.textContent = 'Submitting…';
+ 
+    const fd = new FormData(form);
+    const items = {};
+    Object.keys(PRODUCTS).forEach(function (key) {
+      items[key] = Number(form.querySelector('[data-key="' + key + '"]').value) || 0;
+    });
+ 
+    const payload = {
+      dispensaryName: fd.get('dispensaryName'),
+      dispensaryLicense: fd.get('dispensaryLicense'),
+      dispensaryAddress: fd.get('dispensaryAddress'),
+      buyerName: fd.get('buyerName'),
+      buyerEmail: fd.get('buyerEmail'),
+      buyerPhone: fd.get('buyerPhone'),
+      deliveryHours: fd.get('deliveryHours'),
+      notes: fd.get('notes'),
+      items: items,
+    };
+ 
+    try {
+      const res = await fetch('/.netlify/functions/submit-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+ 
+      if (!res.ok) {
+        throw new Error(result.error || 'Submission failed');
+      }
+ 
+      status.className = 'of-status success';
+      status.textContent = result.message || 'Order received — we will confirm shortly.';
+      form.reset();
+      recalc();
+    } catch (err) {
+      status.className = 'of-status error';
+      status.textContent =
+        'Something went wrong: ' + err.message + ' — email orders@highpriestess.life directly so nothing is lost.';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+})();
+</script>
+  
 </main>
 
 
