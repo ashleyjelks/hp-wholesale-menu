@@ -12,8 +12,8 @@ const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
 const AIRTABLE_TABLE_ID = process.env.AIRTABLE_TABLE_ID;
 const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_TABLE_NAME || 'OnlineOrders';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM_EMAIL = 'orders@highpriestessherbalwellness.com';
-const NOTIFY_EMAIL = 'ashley@highpriestessherbalwellness.com';
+const FROM_EMAIL = process.env.FROM_EMAIL;
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL;
 // const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
 // Source of truth for pricing/case size — the front-end has its own copy for
