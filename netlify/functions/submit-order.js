@@ -54,14 +54,7 @@ exports.handler = async (event) => {
   if (!emailPattern.test(data.buyerEmail.trim())) {
     return jsonResponse(400, { error: 'Buyer email looks invalid' });
   }
-
-  const licensePattern = /^OCM-[A-Z]+-\d{2}-\d{5,6}$/i;
-  if (!licensePattern.test(data.dispensaryLicense.trim())) {
-    return jsonResponse(400, {
-      error: 'Dispensary license number doesn\'t look right (expected format like OCM-DIST-25-000191)',
-    });
-  }
-
+  
   const rawItems = data.items && typeof data.items === 'object' ? data.items : {};
 
   // --- Recompute everything server-side from the PRODUCTS table ---
@@ -115,6 +108,7 @@ exports.handler = async (event) => {
     airtableRecordId = await writeToAirtable(order);
   } catch (err) {
     console.error('AIRTABLE WRITE FAILED', err, JSON.stringify(order));
+    
     // await bestEffortSlackAlert(
     //   `🚨 ORDER FAILED TO SAVE (Airtable error)\nDispensary: ${order.dispensaryName}\nBuyer: ${order.buyerName} (${order.buyerEmail})\nLicense: ${order.dispensaryLicense}\nError: ${err.message}\nCheck Netlify function logs.`
     // );

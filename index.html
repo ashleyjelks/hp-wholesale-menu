@@ -1584,7 +1584,7 @@
           </div>
           <div class="of-field">
             <span class="of-label">Dispensary License Number</span>
-            <input type="text" name="dispensaryLicense" placeholder="OCM-DIST-25-000191" required>
+            <input type="text" name="dispensaryLicense" placeholder="eg OCM-RETL-24-0001234" required>
           </div>
           <div class="of-field">
             <span class="of-label">Buyer Name</span>
@@ -1599,12 +1599,12 @@
             <input type="tel" name="buyerPhone" required>
           </div>
           <div class="of-field full">
-            <span class="of-label">Dispensary Address</span>
+            <span class="of-label">Dispensary Delivery Address</span>
             <textarea name="dispensaryAddress" required></textarea>
           </div>
           <div class="of-field full">
-            <span class="of-label">Delivery Days / Hours<span class="optional-tag">(Optional)</span></span>
-            <input type="text" name="deliveryHours" placeholder="e.g. Mon–Fri, 9am–5pm">
+            <span class="of-label">Preferred Delivery Days / Hours + Delivery Instructions<span class="optional-tag">(Optional)</span></span>
+            <input type="text" name="deliveryHours" placeholder="e.g. Mon–Fri, 9am–5pm, Anytime during opening hours">
           </div>
         </div>
  
@@ -1653,7 +1653,7 @@
         </div>
  
         <div class="order-items">
-          <div class="oi-legend">Preroll Singles<span class="oi-legend-sub">Case of 32 · not yet available in Transcend</span></div>
+          <div class="oi-legend">Preroll Singles<span class="oi-legend-sub">Case of 32</span></div>
  
           <div class="oi-row">
             <div><span class="oi-name">Center</span><span class="oi-price">$5.50 / unit</span></div>
@@ -1688,14 +1688,16 @@
  
         <div class="order-summary">
           <div class="os-item">
-            <span class="os-label">Subtotal (Pre-Tax)</span>
-            <span class="os-value" id="os-subtotal">$0.00</span>
-          </div>
-          <div class="order-summary-divider"></div>
-          <div class="os-item">
-            <span class="os-label">COD Total (10% Discount)</span>
+            <span class="os-label" style="text-align:center;">With COD Discount</span>
             <span class="os-value" id="os-cod-total">$0.00</span>
           </div>
+          <div class="order-summary-divider"></div>
+
+          <div class="os-item">
+            <span class="os-label" style="text-align:center;">Subtotal</span>
+            <span class="os-value" id="os-subtotal">$0.00</span>
+          </div>
+          
         </div>
  
         <div class="of-field full" style="margin-bottom: 24px;">
