@@ -21,11 +21,11 @@ const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL;
 // computed from THIS table, not from anything the client submitted.
 const PRODUCTS = {
   Center_Tin: { label: 'Center — Tin', unitPrice: 25.00, caseSize: 32 },
-  Center_Singles: { label: 'Center — Singles', unitPrice: 5.50, caseSize: 32 },
+  Center_Singles: { label: 'Center — Singles', unitPrice: 5.50, caseSize: 40 },
   Uplift_Tin: { label: 'Uplift — Tin', unitPrice: 25.00, caseSize: 32 },
-  Uplift_Singles: { label: 'Uplift — Singles', unitPrice: 5.50, caseSize: 32 },
+  Uplift_Singles: { label: 'Uplift — Singles', unitPrice: 5.50, caseSize: 40 },
   Unwind_Tin: { label: 'Unwind — Tin', unitPrice: 25.00, caseSize: 32 },
-  Unwind_Singles: { label: 'Unwind — Singles', unitPrice: 5.50, caseSize: 32 },
+  Unwind_Singles: { label: 'Unwind — Singles', unitPrice: 5.50, caseSize: 40 },
   Transcend_Tin: { label: 'Transcend — Tin', unitPrice: 31.00, caseSize: 32 },
 };
 
