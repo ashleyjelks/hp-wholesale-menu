@@ -838,8 +838,6 @@
     flex-shrink: 0;
   }
 
-  .btn-download:hover { background: var(--hp-green-deep); }
-
   .contact-block {
     background: linear-gradient(135deg, #2a1816 0%, #371F1D 40%, #2e1c1a 70%, #3d2220 100%);
     color: var(--smoke);
@@ -1187,11 +1185,12 @@
     .order-summary { grid-template-columns: 1fr; gap: 20px; }
     .order-summary-divider { display: none; }
     .oi-row { flex-direction: column; align-items: flex-start; }
+    .order-cta-button { padding: 16px 32px; font-size: 13px; }
   }
 
   .contact-order-cta { margin-top: 32px; }
  
-  .order-cta-button {
+  . {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -1444,7 +1443,7 @@
     .order-summary { grid-template-columns: 1fr; gap: 20px; padding: 28px 24px; }
     .order-summary-divider { display: none; }
     .oi-row { flex-direction: column; align-items: flex-start; }
-    .order-cta-button { padding: 16px 32px; font-size: 13px; }
+    . { padding: 16px 32px; font-size: 13px; }
   }
 
 </style>
@@ -1506,7 +1505,7 @@
           <div class="single-card-strain">Strain: Iced Cherry Lemon</div>
           <div class="single-card-footer">
             <a class="coa-link" href="COA_Center_Hybrid.pdf" target="_blank">↓ Full COA</a>
-            <button type="button" id="open-order-modal" class="coa-link">Order Now</button>
+            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
             <span class="single-card-price">$5.50 <span class="unit-label">wholesale</span></span>
           </div>
         </div>
@@ -1522,7 +1521,7 @@
           <div class="single-card-strain">Strain: Marrakech Kush</div>
           <div class="single-card-footer">
             <a class="coa-link" href="COA_Uplift_Sativa.pdf" target="_blank">↓ Full COA</a>
-            <button type="button" id="open-order-modal" class="coa-link">Order Now</button>
+            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
             <span class="single-card-price">$5.50 <span class="unit-label">wholesale</span></span>
           </div>
         </div>
@@ -1538,7 +1537,7 @@
       <div class="single-card-strain">Strain: Runtz Raisin</div>
       <div class="single-card-footer">
         <a class="coa-link" href="COA_Unwind_Indica.pdf" target="_blank">↓ Full COA</a>
-        <button type="button" id="open-order-modal" class="coa-link">Order Now</button>
+        <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
         <span class="single-card-price">$5.50 <span class="unit-label">wholesale</span></span>
       </div>
     </div>
@@ -1565,7 +1564,7 @@
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
          <div style="flex-direction: row;"> 
             <a class="coa-link" href="COA_Center_Hybrid.pdf" target="_blank">↓ Full COA</a>
-            <button type="button" id="open-order-modal" class="coa-link">Order Now</button>
+            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
           </div>
           </div>
           <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
@@ -1585,7 +1584,7 @@
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
           <div style="flex-direction: row;">
             <a class="coa-link" href="COA_Uplift_Sativa.pdf" target="_blank">↓ Full COA</a>
-            <button type="button" id="open-order-modal" class="coa-link">Order Now</button>
+            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
             </div>
           </div>
           <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
@@ -1605,7 +1604,7 @@
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
           <div style="flex-direction: row;">
           <a class="coa-link" href="COA_Unwind_Indica.pdf" target="_blank">↓ Full COA</a>
-           <button type="button" id="open-order-modal" class="coa-link">Order Now</button>
+           <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
           </div>
           </div>
           <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
@@ -1625,7 +1624,7 @@
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(197,197,159,0.15);">
           <div style="flex-direction: row;">
           <a class="coa-link" href="COA_Transcend_Hash_Infused.pdf" target="_blank" style="color:var(--hp-blue); border-color:var(--hp-blue);">↓ Full COA</a>
-           <button type="button" id="open-order-modal" class="coa-link">Order Now</button>
+           <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
           </div>
         </div>
           <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--smoke); letter-spacing:0.02em;">$31 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(197,197,159,0.8);">wholesale</span></span>
@@ -1743,7 +1742,7 @@
           <a href="https://highpriestess.life" target="_blank">highpriestess.life</a>
         </div>
         <div class="contact-order-cta">
-          <button type="button" id="open-order-modal" class="order-cta-button">Submit an Order</button>
+           <button type="button" class="btn-download open-order-modal-btn ">Submit an Order</button>
         </div>
       </div>
     </div>
@@ -1926,11 +1925,13 @@
 <script>
 (function () {
   const backdrop = document.getElementById('order-modal-backdrop');
-  const openBtn = document.getElementById('open-order-modal');
+  // const openBtn = document.getElementById('open-order-modal');
   const closeBtn = document.getElementById('order-modal-close');
   const form = document.getElementById('wholesale-order-form');
   const status = document.getElementById('wholesale-order-status');
   const submitBtn = form.querySelector('.of-submit');
+
+  let lastTrigger = null;
  
   // ── modal open/close ──
   function openModal() {
@@ -1941,9 +1942,19 @@
   function closeModal() {
     backdrop.classList.remove('open');
     document.body.classList.remove('order-modal-open');
-    openBtn.focus();
+    // openBtn.focus();
+    if (lastTrigger) lastTrigger.focus();
   }
-  openBtn.addEventListener('click', openModal);
+  // openBtn.addEventListener('click', openModal);
+
+  document.addEventListener('click', function (e) { 
+    const trigger = e.target.closest('.open-order-modal-btn');
+    if (trigger) {
+      lastTrigger = trigger;
+      openModal();
+    }
+  });
+
   closeBtn.addEventListener('click', closeModal);
   backdrop.addEventListener('click', function (e) {
     if (e.target === backdrop) closeModal();
