@@ -1058,7 +1058,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     padding: 16px 0;
     border-bottom: 1px solid rgba(55,31,29,0.1);
   }
@@ -1089,6 +1089,11 @@
     font-size: 22px;
     font-weight: 500;
     color: var(--noir);
+  }
+  .oi-description {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif ;
+    font-weight: 600;
   }
  
   .oi-price {
@@ -1801,7 +1806,9 @@
           <div class="oi-row">
             <div class="oi-info">
               <img class="oi-thumb thumb-cover" src="Preroll_Tin_CENTER.jpg" alt="Center tin">
-              <div><span class="oi-name">Center</span><span class="oi-price">$25.00 / unit</span></div>
+              <div><span class="oi-name">Center</span>
+                <span class="oi-description">Hybrid 7pk</span>
+                <span class="oi-price">$25.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Center_Tin">
@@ -1814,7 +1821,9 @@
           <div class="oi-row">
             <div class="oi-info">
               <img class="oi-thumb thumb-cover" src="Preroll_Tin_UPLIFT.jpg" alt="Uplift tin">
-              <div><span class="oi-name">Uplift</span><span class="oi-price">$25.00 / unit</span></div>
+              <div><span class="oi-name">Uplift</span>
+                <span class="oi-description">Sativa 7pk</span>
+                <span class="oi-price">$25.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Uplift_Tin">
@@ -1827,7 +1836,9 @@
           <div class="oi-row">
             <div class="oi-info">
               <img class="oi-thumb thumb-cover" src="Preroll_Tin_UNWIND.jpg" alt="Unwind tin">
-              <div><span class="oi-name">Unwind</span><span class="oi-price">$25.00 / unit</span></div>
+              <div><span class="oi-name">Unwind</span>
+                <span class="oi-description">Indica 7pk</span>
+                <span class="oi-price">$25.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Unwind_Tin">
@@ -1840,7 +1851,9 @@
           <div class="oi-row">
             <div class="oi-info">
               <img class="oi-thumb thumb-cover" src="Preroll_Tin_TRANSCEND.jpg" alt="Transcend tin">
-              <div><span class="oi-name">Transcend</span><span class="oi-price">$31.00 / unit</span></div>
+              <div><span class="oi-name">Transcend</span>
+                <span class="oi-description">Hash infused 7pk</span>
+                <span class="oi-price">$31.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Transcend_Tin">
@@ -1857,7 +1870,11 @@
           <div class="oi-row">
             <div class="oi-info">
               <img class="oi-thumb thumb-contain" src="preroll_mock_center.png" alt="Center single">
-              <div><span class="oi-name">Center</span><span class="oi-price">$5.50 / unit</span></div>
+              <div>
+                <span class="oi-name">Center</span>
+                <span class="oi-description">Hybrid Preroll</span>
+                <span class="oi-price">$5.50 / unit</span>
+            </div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Center_Singles">
@@ -1870,7 +1887,9 @@
           <div class="oi-row">
             <div class="oi-info">
               <img class="oi-thumb thumb-contain" src="preroll_mock_uplift.png" alt="Uplift single">
-              <div><span class="oi-name">Uplift</span><span class="oi-price">$5.50 / unit</span></div>
+              <div><span class="oi-name">Uplift</span>
+                <span class="oi-description">Sativa Preroll</span>
+                <span class="oi-price">$5.50 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Uplift_Singles">
@@ -1883,7 +1902,10 @@
           <div class="oi-row">
             <div class="oi-info">
               <img class="oi-thumb thumb-contain" src="preroll_mock_unwind.png" alt="Unwind single">
-              <div><span class="oi-name">Unwind</span><span class="oi-price">$5.50 / unit</span></div>
+              <div>
+                <span class="oi-name">Unwind</span>
+                <span class="oi-description">Indica Preroll</span>
+                <span class="oi-price">$5.50 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Unwind_Singles">
