@@ -165,6 +165,33 @@
 
   .strains-section { margin-bottom: 56px; }
 
+  .hero-statement {
+    max-width: 720px;
+    margin: 0 0 48px;
+  }
+
+  .hero-statement .hero-lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.35;
+    color: var(--noir);
+    margin-bottom: 16px;
+  }
+
+  .hero-statement p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--noir-light);
+  }
+
+  .hero-statement strong { color: var(--noir); font-weight: 700; }
+
+  @media (max-width: 760px) {
+    .hero-statement .hero-lede { font-size: 24px; }
+  }
+
   .menu-subhead {
     font-family: 'Cormorant Garamond', serif;
     font-size: 28px;
@@ -748,6 +775,33 @@
     .flyer-gallery-head { padding: 0 20px; }
     .flyer-gallery-scroll { padding: 4px 20px 20px; }
     .flyer-card { width: 168px; }
+  }
+
+  /* ── INSTAGRAM EMBED SLOT (new) ── */
+  .ig-gallery-wrap { margin-top: 56px; }
+
+  .ig-embed-slot {
+    max-width: 884px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .ig-embed-slot .ig-embed-target {
+    border: 1px dashed rgba(223,216,207,0.3);
+    padding: 40px 24px;
+    text-align: center;
+    color: rgba(223,216,207,0.7);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .ig-embed-slot .btn-download { margin: 0 auto; }
+  .ig-embed-slot-cta { display: flex; justify-content: center; }
+
+  @media (max-width: 760px) {
+    .ig-embed-slot { padding: 0 20px; }
   }
 
   .two-col {
@@ -1483,13 +1537,18 @@
 </header>
 
 <div class="notice-band">
-  ✦ &nbsp; 5% off all first orders — new accounts welcome &nbsp; ✦ &nbsp; COD &amp; volume discounts available &nbsp; ✦
+  ✦ &nbsp; 5% off all first orders — new accounts welcome &nbsp; ✦ &nbsp; COD &amp; volume discounts up to 20% &nbsp; ✦
 </div>
 
 <main>
 
   <div class="hero-image">
     <img src="Preroll_Tins_ALL.jpg" alt="High Priestess preroll tins — full line">
+  </div>
+
+  <div class="hero-statement">
+    <p class="hero-lede">Every brand on this shelf sells a strain. HIGH PRIESTESS sells the moment you finally exhale.</p>
+    <p>Witchy wellness, built for people who already treat their high like a ritual — not a trend. Born from a tarot card the founder couldn't stop pulling, run by <strong>the only Black woman operating her own Tier 1 processing license in New York.</strong> Nothing else on your shelf has that story. Nothing else needs to.</p>
   </div>
 
   <div class="section-label">Premium Whole Flower Prerolls</div>
@@ -1502,48 +1561,48 @@
  
       <div class="single-card">
         <div style="width: 100%; height: 100%; background-color: white; color:white;">
-        <img style="transform: scaleY(0.85);" src="preroll_mock_center.png" height="100%" alt="Center — Iced Cherry Lemon single preroll">
+        <img style="transform: scaleY(0.85);" src="preroll_mock_center.png" height="100%" alt="Center — Peaches and Cream single preroll">
         </div>
         <div class="single-card-body">
           <div class="single-card-badge hybrid-badge">Hybrid Cannabis Preroll</div>
           <div class="single-card-name">Center</div>
-          <div class="single-card-strain">Strain: Iced Cherry Lemon</div>
+          <div class="single-card-strain">Strain: Peaches and Cream</div>
           <div class="single-card-footer">
             <a class="coa-link" href="COA_Center_Hybrid.pdf" target="_blank">↓ Full COA</a>
             <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
-            <span class="single-card-price">$5.50 <span class="unit-label">wholesale</span></span>
+            <span class="single-card-price">$5.00 <span class="unit-label">wholesale</span></span>
           </div>
         </div>
       </div>
  
       <div class="single-card">
         <div style="width: 100%; height: 100%; background-color: white; color:white;">
-          <img style="transform: scale(1.05, 0.94);" src="preroll_mock_uplift.png" alt="Uplift — Marrakech Kush single preroll">
+          <img style="transform: scale(1.05, 0.94);" src="preroll_mock_uplift.png" alt="Uplift — Sour Nerds single preroll">
         </div>
         <div class="single-card-body">
           <div class="single-card-badge sativa-badge">Sativa Cannabis Preroll</div>
           <div class="single-card-name">Uplift</div>
-          <div class="single-card-strain">Strain: Marrakech Kush</div>
+          <div class="single-card-strain">Strain: Sour Nerds</div>
           <div class="single-card-footer">
             <a class="coa-link" href="COA_Uplift_Sativa.pdf" target="_blank">↓ Full COA</a>
             <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
-            <span class="single-card-price">$5.50 <span class="unit-label">wholesale</span></span>
+            <span class="single-card-price">$5.00 <span class="unit-label">wholesale</span></span>
           </div>
         </div>
       </div>
  
       <div class="single-card">
         <div style="width: 100%; height: 100%; background-color: white; color:white;">
-          <img style=" transform: scaley(0.8);  margin: -2px 0 2px 0;" src="preroll_mock_unwind.png" alt="Unwind — Runtz Raisin single preroll">
+          <img style=" transform: scaley(0.8);  margin: -2px 0 2px 0;" src="preroll_mock_unwind.png" alt="Unwind — 24 Karat Kush single preroll">
         </div>
         <div class="single-card-body">
           <div class="single-card-badge indica-badge">Indica Cannabis Preroll</div>
       <div class="single-card-name">Unwind</div>
-      <div class="single-card-strain">Strain: Runtz Raisin</div>
+      <div class="single-card-strain">Strain: 24 Karat Kush</div>
       <div class="single-card-footer">
         <a class="coa-link" href="COA_Unwind_Indica.pdf" target="_blank">↓ Full COA</a>
         <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
-        <span class="single-card-price">$5.50 <span class="unit-label">wholesale</span></span>
+        <span class="single-card-price">$5.00 <span class="unit-label">wholesale</span></span>
       </div>
     </div>
   </div>
@@ -1552,27 +1611,27 @@
 
 
 
-  <div class="menu-subhead">7 Pack Tins<span class="subhead-meta">7 x 0.7g prerolls, 5g per tin</span></div>
+  <div class="menu-subhead">7 Pack Tins<span class="subhead-meta">7 x 0.5g prerolls, 3.5g per tin</span></div>
 
   <div class="strains-section">
 
     <div class="strain-card hybrid">
       <div class="strain-img">
-        <img src="Preroll_Tin_CENTER.jpg" alt="Center — Lemon Cherry Gelato">
+        <img src="Preroll_Tin_CENTER.jpg" alt="Center — Peaches and Cream">
       </div>
       <div class="strain-body">
         <div class="strain-type-badge">Hybrid Cannabis Prerolls</div>
         <div class="strain-name-large" style="font-size: 50px; margin-bottom:6px;">Center</div>
         <div style="font-size: 13px; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:16px;">Anytime · Balanced · Present · Harmonizing</div>
         <div class="strain-descriptor" style="display:block; line-height:1.8; color:var(--noir-light); margin-bottom:20px;">A premium hybrid your budtenders can recommend to any customer, any time of day, without hesitation. Whole flower, no shake or trim, just good prerolls, keeps return rates low and repeat buys high.</div>
-        <div style="font-size: 13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 5g total &nbsp;·&nbsp; Whole flower, no shake</div>
+        <div style="font-size: 13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.5g &nbsp;·&nbsp; 3.5g total &nbsp;·&nbsp; Whole flower, no shake</div>
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
          <div style="flex-direction: row;"> 
             <a class="coa-link" href="COA_Center_Hybrid.pdf" target="_blank">↓ Full COA</a>
             <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
           </div>
           </div>
-          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$20 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
         </div>
       </div>
     </div>
@@ -1585,34 +1644,34 @@
         <div class="strain-name-large" style="font-size: 50px; margin-bottom:6px;">Uplift</div>
         <div style="font-size: 12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:16px;">Daytime · Social · Creative · Active</div>
         <div class="strain-descriptor" style="display:block; line-height:1.8; color:var(--noir-light); margin-bottom:20px;">Daytime sativa built for your functional-use customers — morning and midday traffic looking for focus over sedation. Premium prerolls, no shake or trim, just good prerolls, keeps return rates low and repeat buys high.</div>
-        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 5g total &nbsp;·&nbsp; Whole flower, no shake</div>
+        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.5g &nbsp;·&nbsp; 3.5g total &nbsp;·&nbsp; Whole flower, no shake</div>
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
           <div style="flex-direction: row;">
             <a class="coa-link" href="COA_Uplift_Sativa.pdf" target="_blank">↓ Full COA</a>
             <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
             </div>
           </div>
-          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$20 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
         </div>
       </div>
     </div>
     <div class="strain-card indica">
       <div class="strain-img">
-        <img src="Preroll_Tin_UNWIND.jpg" alt="Unwind — Grape Gas">
+        <img src="Preroll_Tin_UNWIND.jpg" alt="Unwind — 24 Karat Kush">
       </div>
       <div class="strain-body">
         <div class="strain-type-badge">Indica Cannabis Prerolls</div>
         <div class="strain-name-large" style="font-size: 50px; margin-bottom:6px;">Unwind</div>
         <div style="font-size: 12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:16px;">Evening · Relaxing · Grounded · Intimate</div>
         <div class="strain-descriptor" style="display:block; line-height:1.8; color:var(--noir-light); margin-bottom:20px;">Evening indica for your highest-frequency purchase occasion.  Premium prerolls, no shake or trim, just good prerolls, keeps return rates low and repeat buys high.</div>
-        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 5g total &nbsp;·&nbsp; Whole flower, no shake</div>
+        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--smoke-dark); font-weight:500; margin-bottom:12px;">7 × 0.5g &nbsp;·&nbsp; 3.5g total &nbsp;·&nbsp; Whole flower, no shake</div>
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(55,31,29,0.1);">
           <div style="flex-direction: row;">
           <a class="coa-link" href="COA_Unwind_Indica.pdf" target="_blank">↓ Full COA</a>
            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
           </div>
           </div>
-          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$25 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$20 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
         </div>
       </div>
     </div>
@@ -1650,8 +1709,8 @@
     <div class="discount-flag">
       <div class="flag-mark">◆</div>
       <div class="flag-text">
-        <strong>Volume &amp; COD Discounts</strong>
-        Available and readily offered. Reach out to discuss what works for your store.
+        <strong>Volume Discounts</strong>
+        Up to 20% off, based on volume. Inquire for details.
       </div>
     </div>
   </div>
@@ -1676,6 +1735,27 @@
       </div>
       <div class="flyer-card">
         <img src="Flyer_TRANSCEND.png" alt="Transcend flyer — hash infused, a little flight, no turbulence">
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM CAROUSEL (new) -->
+  <div class="flyer-gallery-wrap ig-gallery-wrap">
+    <div class="flyer-gallery-head">
+      <div class="flyer-gallery-title">From Instagram</div>
+      <div class="flyer-gallery-sub">@highpriestess.cann</div>
+    </div>
+    <div class="ig-embed-slot">
+      <!--
+        IG EMBED GOES HERE.
+        Instagram has no native "latest posts" widget — this needs a third-party
+        feed service (e.g. EmbedSocial or Elfsight's Instagram Feed). Free signup,
+        connect @highpriestess.cann, pick a "Carousel" template, then replace the
+        placeholder block below with the embed snippet they generate.
+      -->
+      <div class="ig-embed-target">Instagram carousel embed goes here</div>
+      <div class="ig-embed-slot-cta">
+        <a class="btn-download" href="https://www.instagram.com/highpriestess.cann" target="_blank">Follow @highpriestess.cann →</a>
       </div>
     </div>
   </div>
@@ -1715,7 +1795,7 @@
         </div>
         <div class="credential-item">
           <div class="cred-label">Coming Soon</div>
-          <div class="cred-value">Rosin Vapes<br>2-Packs</div>
+          <div class="cred-value">Rosin Vapes<br>Early September</div>
         </div>
       </div>
     </div>
@@ -1753,9 +1833,8 @@
     </div>
     <div class="contact-right">
       <div class="cta-note">
-        Current Strains: &nbsp; <strong>Iced Cherry Lemon ✦ Marrakech Kush ✦ Runtz Raisin.</strong><br><br>
-        Hash-infused Transcend is available now. Rosin Vapes and 2pk prerolls drop soon.<br><br>
-        New accounts get 5% off their first order. As a Tier 1 processor we have much more flexibility on our margins. Volume and COD terms are easy conversations — just ask. We also offer half-case sizes, reach out for more details. 
+        Live rosin vapes launch early September. New strains dropping soon.<br><br>
+        New accounts get 5% off their first order. As a Tier 1 processor we have much more flexibility on our margins. Volume discounts of up to 20% are available — just ask. We also offer half-case sizes, reach out for more details. 
       </div>
       <div class="cta-highlight">
         <img src="secondary-logo-smoke.png" alt="High Priestess Herbal Wellness — for modern mystics" style="width:100%; max-width:340px; height:auto; opacity:0.8;">
@@ -1801,14 +1880,14 @@
         </div>
  
         <div class="order-items">
-          <div class="oi-legend">7 Pack Preroll Tins<span class="oi-legend-sub">7 x 0.7g prerolls · 5g/unit</span><span class="oi-legend-sub">Case of 32 units</span></div>
+          <div class="oi-legend">7 Pack Preroll Tins<span class="oi-legend-sub">7 prerolls per tin — size varies by SKU</span><span class="oi-legend-sub">Case of 32 units</span></div>
  
           <div class="oi-row">
             <div class="oi-info">
               <img class="oi-thumb thumb-cover" src="Preroll_Tin_CENTER.jpg" alt="Center tin">
               <div><span class="oi-name">Center</span>
-                <span class="oi-description">Hybrid 7pk</span>
-                <span class="oi-price">$25.00 / unit</span></div>
+                <span class="oi-description">Hybrid 7pk · 3.5g</span>
+                <span class="oi-price">$20.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Center_Tin">
@@ -1822,8 +1901,8 @@
             <div class="oi-info">
               <img class="oi-thumb thumb-cover" src="Preroll_Tin_UPLIFT.jpg" alt="Uplift tin">
               <div><span class="oi-name">Uplift</span>
-                <span class="oi-description">Sativa 7pk</span>
-                <span class="oi-price">$25.00 / unit</span></div>
+                <span class="oi-description">Sativa 7pk · 3.5g</span>
+                <span class="oi-price">$20.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Uplift_Tin">
@@ -1837,8 +1916,8 @@
             <div class="oi-info">
               <img class="oi-thumb thumb-cover" src="Preroll_Tin_UNWIND.jpg" alt="Unwind tin">
               <div><span class="oi-name">Unwind</span>
-                <span class="oi-description">Indica 7pk</span>
-                <span class="oi-price">$25.00 / unit</span></div>
+                <span class="oi-description">Indica 7pk · 3.5g</span>
+                <span class="oi-price">$20.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Unwind_Tin">
@@ -1852,7 +1931,7 @@
             <div class="oi-info">
               <img class="oi-thumb thumb-cover" src="Preroll_Tin_TRANSCEND.jpg" alt="Transcend tin">
               <div><span class="oi-name">Transcend</span>
-                <span class="oi-description">Hash infused 7pk</span>
+                <span class="oi-description">Hash infused 7pk · 5g</span>
                 <span class="oi-price">$31.00 / unit</span></div>
             </div>
             <div class="oi-control">
@@ -1873,7 +1952,7 @@
               <div>
                 <span class="oi-name">Center</span>
                 <span class="oi-description">Hybrid Preroll</span>
-                <span class="oi-price">$5.50 / unit</span>
+                <span class="oi-price">$5.00 / unit</span>
             </div>
             </div>
             <div class="oi-control">
@@ -1889,7 +1968,7 @@
               <img class="oi-thumb thumb-contain" src="preroll_mock_uplift.png" alt="Uplift single">
               <div><span class="oi-name">Uplift</span>
                 <span class="oi-description">Sativa Preroll</span>
-                <span class="oi-price">$5.50 / unit</span></div>
+                <span class="oi-price">$5.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Uplift_Singles">
@@ -1905,7 +1984,7 @@
               <div>
                 <span class="oi-name">Unwind</span>
                 <span class="oi-description">Indica Preroll</span>
-                <span class="oi-price">$5.50 / unit</span></div>
+                <span class="oi-price">$5.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Unwind_Singles">
@@ -1989,12 +2068,12 @@
   // Must mirror the PRODUCTS table in netlify/functions/submit-order.js —
   // this copy only drives the live preview; the server recomputes independently.
   const PRODUCTS = {
-    Center_Tin:      { unitPrice: 25.00, caseSize: 32 },
-    Center_Singles:  { unitPrice: 5.50,  caseSize: 40 },
-    Uplift_Tin:      { unitPrice: 25.00, caseSize: 32 },
-    Uplift_Singles:  { unitPrice: 5.50,  caseSize: 40 },
-    Unwind_Tin:      { unitPrice: 25.00, caseSize: 32 },
-    Unwind_Singles:  { unitPrice: 5.50,  caseSize: 40 },
+    Center_Tin:      { unitPrice: 20.00, caseSize: 32 },
+    Center_Singles:  { unitPrice: 5.00,  caseSize: 40 },
+    Uplift_Tin:      { unitPrice: 20.00, caseSize: 32 },
+    Uplift_Singles:  { unitPrice: 5.00,  caseSize: 40 },
+    Unwind_Tin:      { unitPrice: 20.00, caseSize: 32 },
+    Unwind_Singles:  { unitPrice: 5.00,  caseSize: 40 },
     Transcend_Tin:   { unitPrice: 31.00, caseSize: 32 },
   };
  

@@ -20,12 +20,12 @@ const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL;
 // the live preview, but every dollar figure that gets saved or emailed is
 // computed from THIS table, not from anything the client submitted.
 const PRODUCTS = {
-  Center_Tin: { label: 'Center — Tin', unitPrice: 25.00, caseSize: 32 },
-  Center_Singles: { label: 'Center — Singles', unitPrice: 5.50, caseSize: 40 },
-  Uplift_Tin: { label: 'Uplift — Tin', unitPrice: 25.00, caseSize: 32 },
-  Uplift_Singles: { label: 'Uplift — Singles', unitPrice: 5.50, caseSize: 40 },
-  Unwind_Tin: { label: 'Unwind — Tin', unitPrice: 25.00, caseSize: 32 },
-  Unwind_Singles: { label: 'Unwind — Singles', unitPrice: 5.50, caseSize: 40 },
+  Center_Tin: { label: 'Center — Tin', unitPrice: 20.00, caseSize: 32 },
+  Center_Singles: { label: 'Center — Singles', unitPrice: 5.00, caseSize: 40 },
+  Uplift_Tin: { label: 'Uplift — Tin', unitPrice: 20.00, caseSize: 32 },
+  Uplift_Singles: { label: 'Uplift — Singles', unitPrice: 5.00, caseSize: 40 },
+  Unwind_Tin: { label: 'Unwind — Tin', unitPrice: 20.00, caseSize: 32 },
+  Unwind_Singles: { label: 'Unwind — Singles', unitPrice: 5.00, caseSize: 40 },
   Transcend_Tin: { label: 'Transcend — Tin', unitPrice: 31.00, caseSize: 32 },
 };
 
@@ -54,7 +54,7 @@ exports.handler = async (event) => {
   if (!emailPattern.test(data.buyerEmail.trim())) {
     return jsonResponse(400, { error: 'Buyer email looks invalid' });
   }
-  
+
   const rawItems = data.items && typeof data.items === 'object' ? data.items : {};
 
   // --- Recompute everything server-side from the PRODUCTS table ---
@@ -114,7 +114,7 @@ exports.handler = async (event) => {
     airtableRecordId = await writeToAirtable(order);
   } catch (err) {
     console.error('AIRTABLE WRITE FAILED', err, JSON.stringify(order));
-    
+
     // await bestEffortSlackAlert(
     //   `🚨 ORDER FAILED TO SAVE (Airtable error)\nDispensary: ${order.dispensaryName}\nBuyer: ${order.buyerName} (${order.buyerEmail})\nLicense: ${order.dispensaryLicense}\nError: ${err.message}\nCheck Netlify function logs.`
     // );
@@ -214,7 +214,7 @@ async function writeToAirtable(order) {
     throw new Error('Airtable is not configured (missing AIRTABLE_TOKEN or AIRTABLE_BASE_ID)');
   }
 
-  
+
 
   const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
   const res = await fetch(url, {
