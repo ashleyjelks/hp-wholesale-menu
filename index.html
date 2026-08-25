@@ -1842,6 +1842,16 @@
     const s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.instagram.com/embed.js';
+    // Per Meta's own oEmbed docs: instgrm.Embeds.process() must be called
+    // explicitly after the library loads — it does not reliably auto-run
+    // on a script injected into the page after the fact, which is exactly
+    // what's happening here. Without this, embed.js sits there loaded and
+    // idle and the placeholders never convert.
+    s.onload = function () {
+      if (window.instgrm && window.instgrm.Embeds) {
+        window.instgrm.Embeds.process();
+      }
+    };
     document.body.appendChild(s);
   })();
   </script>
