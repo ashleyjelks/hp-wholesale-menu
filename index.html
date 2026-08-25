@@ -1803,9 +1803,13 @@
       return;
     }
 
-    IG_POST_URLS.forEach(function (url) {
+    IG_POST_URLS.forEach(function (rawUrl) {
       const card = document.createElement('div');
       card.className = 'ig-post-card';
+      // Matching the exact permalink format Instagram's own "Embed" button
+      // outputs (?utm_source=ig_embed&utm_campaign=loading) — testing whether
+      // their processing script depends on that param being present.
+      const url = rawUrl.replace(/\/?(\?.*)?$/, '/') + '?utm_source=ig_embed&utm_campaign=loading';
       // Full placeholder skeleton — matches what Instagram's own "Embed" button
       // generates. embed.js expects these specific child elements to be present
       // so it can walk the DOM and swap in the real post; a stripped-down
