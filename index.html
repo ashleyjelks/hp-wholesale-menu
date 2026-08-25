@@ -777,56 +777,6 @@
     .flyer-card { width: 168px; }
   }
 
-  /* ── INSTAGRAM CAROUSEL (new) ── */
-  .ig-gallery-wrap { margin-top: 56px; }
-
-  .ig-embed-slot {
-    padding: 0 0 20px;
-  }
-
-  .ig-carousel-scroll {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 4px 48px 20px;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--hp-blue) transparent;
-  }
-
-  .ig-carousel-scroll::-webkit-scrollbar { height: 6px; }
-  .ig-carousel-scroll::-webkit-scrollbar-track { background: transparent; }
-  .ig-carousel-scroll::-webkit-scrollbar-thumb { background: var(--hp-blue-deep); }
-
-  .ig-post-card {
-    flex: 0 0 auto;
-    width: 326px;
-    scroll-snap-align: start;
-  }
-
-  .ig-carousel-empty {
-    padding: 40px 24px;
-    text-align: center;
-    color: rgba(223,216,207,0.7);
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    line-height: 1.8;
-    border: 1px dashed rgba(223,216,207,0.3);
-    margin: 4px 48px 24px;
-  }
-
-  .ig-embed-slot-cta { display: flex; justify-content: center; padding: 0 48px; }
-  .ig-embed-slot-cta .btn-download { margin: 0 auto; }
-
-  @media (max-width: 760px) {
-    .ig-carousel-scroll { padding: 4px 20px 20px; }
-    .ig-carousel-empty { margin: 4px 20px 24px; }
-    .ig-embed-slot-cta { padding: 0 20px; }
-    .ig-post-card { width: 280px; }
-  }
-
   .two-col {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -1530,7 +1480,6 @@
 
 </style>
 
-<script async src="https://www.instagram.com/embed.js"></script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0WHRS207E"></script>
 <script>
@@ -1763,105 +1712,6 @@
       </div>
     </div>
   </div>
-
-  <!-- INSTAGRAM CAROUSEL (new) -->
-  <div class="flyer-gallery-wrap ig-gallery-wrap">
-    <div class="flyer-gallery-head">
-      <div class="flyer-gallery-title">From Instagram</div>
-      <div class="flyer-gallery-sub">@highpriestess.cann</div>
-    </div>
-    <div class="ig-embed-slot">
-      <div class="ig-carousel-scroll" id="ig-carousel-scroll"></div>
-      <div class="ig-embed-slot-cta">
-        <a class="btn-download" href="https://www.instagram.com/highpriestess.cann" target="_blank">Follow @highpriestess.cann →</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-  (function () {
-    // ── Instagram post carousel ──
-    // Native embed, no API key, no third-party account — Meta made public-post
-    // oEmbed tokenless again as of June 2026. embed.js (loaded at the bottom of
-    // this file) does the actual rendering; this just builds the blockquotes.
-    //
-    // TO UPDATE: open each post on instagram.com, copy its URL, and add it below.
-    // This is a manual list, not an auto-pulling "latest posts" feed — Instagram
-    // doesn't offer that without a paid, account-connected service. Swap these
-    // out whenever you want to feature something new.
-    const IG_POST_URLS = [
-      '//www.instagram.com/p/Db6SXhgyxxo/',
-      // 'https://www.instagram.com/p/DRcnyTfkdmQ/',
-      // 'https://www.instagram.com/reel/DbnzTq-SQJc/',
-      // 'https://www.instagram.com/p/DbMCd0hpkba/',
-      // 'https://www.instagram.com/p/DYkLWDWJcEf/',
-      // 'https://www.instagram.com/p/DOGn8aGDbby/',
-    ];
-
-    const scroll = document.getElementById('ig-carousel-scroll');
-    if (!scroll) return;
-
-    if (IG_POST_URLS.length === 0) {
-      scroll.outerHTML = '<div class="ig-carousel-empty">Add post URLs to IG_POST_URLS in the script above to populate this carousel.</div>';
-      return;
-    }
-
-    IG_POST_URLS.forEach(function (rawUrl) {
-      const card = document.createElement('div');
-      card.className = 'ig-post-card';
-      // Matching the exact permalink format Instagram's own "Embed" button
-      // outputs (?utm_source=ig_embed&utm_campaign=loading) — testing whether
-      // their processing script depends on that param being present.
-      const url = rawUrl.replace(/\/?(\?.*)?$/, '/') + '?utm_source=ig_embed&utm_campaign=loading';
-      // Full placeholder skeleton — matches what Instagram's own "Embed" button
-      // generates. embed.js expects these specific child elements to be present
-      // so it can walk the DOM and swap in the real post; a stripped-down
-      // blockquote (just the permalink attribute) leaves it looking for nodes
-      // that aren't there, which is what throws the console errors.
-      card.innerHTML =
-        '<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="' + url + '" data-instgrm-version="14" ' +
-        'style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:100%;">' +
-          '<div style="padding:16px;">' +
-            '<a href="' + url + '" style="background:#FFFFFF; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%;" target="_blank" rel="noopener">' +
-              '<div style="display:flex; flex-direction:row; align-items:center;">' +
-                '<div style="background-color:#F4F4F4; border-radius:50%; flex-grow:0; height:40px; margin-right:14px; width:40px;"></div>' +
-                '<div style="display:flex; flex-direction:column; flex-grow:1; justify-content:center;">' +
-                  '<div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; margin-bottom:6px; width:100px;"></div>' +
-                  '<div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; width:60px;"></div>' +
-                '</div>' +
-              '</div>' +
-              '<div style="padding:19% 0;"></div>' +
-              '<div style="display:block; height:50px; margin:0 auto 12px; width:50px;">' +
-                '<svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,64.898 C565.244,67.933 564.201,70.575 561.898,72.878 C559.594,75.182 556.952,76.226 553.917,76.36 C550.591,76.507 541.409,76.507 538.083,76.36 C535.048,76.226 532.406,75.182 530.102,72.878 C527.798,70.575 526.755,67.933 526.621,64.898 C526.474,61.571 526.474,52.39 526.621,49.064 C526.755,46.028 527.798,43.387 530.102,41.083 C532.406,38.779 535.048,37.736 538.083,37.602 C541.409,37.454 550.591,37.454 553.917,37.602 C556.952,37.736 559.594,38.779 561.898,41.083 C564.201,43.387 565.244,46.028 565.378,49.064 C565.526,52.39 565.526,61.568 565.378,64.898 M572.117,26.478 C570.674,22.798 567.902,19.997 564.192,18.556 C560.826,17.254 556.868,17.087 554.03,17.084 C550.591,17.086 541.409,17.086 537.97,17.084 C535.132,17.087 531.174,17.254 527.808,18.556 C524.098,19.997 521.326,22.798 519.883,26.478 C518.581,29.844 518.414,33.802 518.412,38.041 C518.409,41.99 518.409,51.169 518.412,55.117 C518.414,59.356 518.581,63.314 519.883,66.68 C521.326,70.36 524.098,73.161 527.808,74.602 C531.174,75.904 535.132,76.071 537.97,76.074 C541.409,76.076 550.591,76.076 554.03,76.074 C556.868,76.071 560.826,75.904 564.192,74.602 C567.902,73.161 570.674,70.36 572.117,66.68 C573.419,63.314 573.586,59.356 573.588,55.117 C573.591,51.169 573.591,41.99 573.588,38.041 C573.586,33.802 573.419,29.844 572.117,26.478"></path></g></g></g></svg>' +
-              '</div>' +
-              '<div style="padding-top:8px;">' +
-                '<div style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>' +
-              '</div>' +
-            '</a>' +
-            '<p style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">' +
-              '<a href="' + url + '" style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank" rel="noopener">A post shared by High Priestess (@highpriestess.cann)</a>' +
-            '</p>' +
-          '</div>' +
-        '</blockquote>';
-      scroll.appendChild(card);
-    });
-
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.instagram.com/embed.js';
-    // Per Meta's own oEmbed docs: instgrm.Embeds.process() must be called
-    // explicitly after the library loads — it does not reliably auto-run
-    // on a script injected into the page after the fact, which is exactly
-    // what's happening here. Without this, embed.js sits there loaded and
-    // idle and the placeholders never convert.
-    s.onload = function () {
-      if (window.instgrm && window.instgrm.Embeds) {
-        window.instgrm.Embeds.process();
-      }
-    };
-    document.body.appendChild(s);
-  })();
-  </script>
 
   <hr class="rule">
 
