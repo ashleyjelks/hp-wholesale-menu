@@ -777,31 +777,54 @@
     .flyer-card { width: 168px; }
   }
 
-  /* ── INSTAGRAM EMBED SLOT (new) ── */
+  /* ── INSTAGRAM CAROUSEL (new) ── */
   .ig-gallery-wrap { margin-top: 56px; }
 
   .ig-embed-slot {
-    max-width: 884px;
-    margin: 0 auto;
-    padding: 0 48px;
+    padding: 0 0 20px;
   }
 
-  .ig-embed-slot .ig-embed-target {
-    border: 1px dashed rgba(223,216,207,0.3);
+  .ig-carousel-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 48px 20px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--hp-blue) transparent;
+  }
+
+  .ig-carousel-scroll::-webkit-scrollbar { height: 6px; }
+  .ig-carousel-scroll::-webkit-scrollbar-track { background: transparent; }
+  .ig-carousel-scroll::-webkit-scrollbar-thumb { background: var(--hp-blue-deep); }
+
+  .ig-post-card {
+    flex: 0 0 auto;
+    width: 326px;
+    scroll-snap-align: start;
+  }
+
+  .ig-carousel-empty {
     padding: 40px 24px;
     text-align: center;
     color: rgba(223,216,207,0.7);
     font-size: 13px;
     letter-spacing: 0.05em;
     line-height: 1.8;
-    margin-bottom: 24px;
+    border: 1px dashed rgba(223,216,207,0.3);
+    margin: 4px 48px 24px;
   }
 
-  .ig-embed-slot .btn-download { margin: 0 auto; }
-  .ig-embed-slot-cta { display: flex; justify-content: center; }
+  .ig-embed-slot-cta { display: flex; justify-content: center; padding: 0 48px; }
+  .ig-embed-slot-cta .btn-download { margin: 0 auto; }
 
   @media (max-width: 760px) {
-    .ig-embed-slot { padding: 0 20px; }
+    .ig-carousel-scroll { padding: 4px 20px 20px; }
+    .ig-carousel-empty { margin: 4px 20px 24px; }
+    .ig-embed-slot-cta { padding: 0 20px; }
+    .ig-post-card { width: 280px; }
   }
 
   .two-col {
@@ -1740,25 +1763,62 @@
   </div>
 
   <!-- INSTAGRAM CAROUSEL (new) -->
-  <!-- <div class="flyer-gallery-wrap ig-gallery-wrap"> -->
-    <!-- <div class="flyer-gallery-head">
+  <div class="flyer-gallery-wrap ig-gallery-wrap">
+    <div class="flyer-gallery-head">
       <div class="flyer-gallery-title">From Instagram</div>
       <div class="flyer-gallery-sub">@highpriestess.cann</div>
     </div>
-    <div class="ig-embed-slot"> -->
-      <!--
-        IG EMBED GOES HERE.
-        Instagram has no native "latest posts" widget — this needs a third-party
-        feed service (e.g. EmbedSocial or Elfsight's Instagram Feed). Free signup,
-        connect @highpriestess.cann, pick a "Carousel" template, then replace the
-        placeholder block below with the embed snippet they generate.
-      -->
-      <!-- <div class="ig-embed-target">Instagram carousel embed goes here</div>
+    <div class="ig-embed-slot">
+      <div class="ig-carousel-scroll" id="ig-carousel-scroll"></div>
       <div class="ig-embed-slot-cta">
-        <a class="btn-download" href="https://www.instagram.com/highpriestess.cann" target="_blank">Follow @highpriestess.cann →</a>
+        <a class="btn-download" href="https://www.instagram.com/highpriestess.cann?utm_source=hpw-ny" target="_blank">Follow @highpriestess.cann →</a>
       </div>
-    </div> -->
-  <!-- </div> -->
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    // ── Instagram post carousel ──
+    // Native embed, no API key, no third-party account — Meta made public-post
+    // oEmbed tokenless again as of June 2026. embed.js (loaded at the bottom of
+    // this file) does the actual rendering; this just builds the blockquotes.
+    //
+    // TO UPDATE: open each post on instagram.com, copy its URL, and add it below.
+    // This is a manual list, not an auto-pulling "latest posts" feed — Instagram
+    // doesn't offer that without a paid, account-connected service. Swap these
+    // out whenever you want to feature something new.
+    const IG_POST_URLS = [
+      'https://www.instagram.com/p/DRcnyTfkdmQ/',
+      'https://www.instagram.com/reel/DbnzTq-SQJc/',
+      'https://www.instagram.com/p/DbMCd0hpkba/',
+      'https://www.instagram.com/p/DYkLWDWJcEf/',
+      'https://www.instagram.com/p/DOGn8aGDbby/',
+    ];
+
+    const scroll = document.getElementById('ig-carousel-scroll');
+    if (!scroll) return;
+
+    if (IG_POST_URLS.length === 0) {
+      scroll.outerHTML = '<div class="ig-carousel-empty">Add post URLs to IG_POST_URLS in the script above to populate this carousel.</div>';
+      return;
+    }
+
+    IG_POST_URLS.forEach(function (url) {
+      const card = document.createElement('div');
+      card.className = 'ig-post-card';
+      card.innerHTML =
+        '<blockquote class="instagram-media" data-instgrm-permalink="' + url + '" data-instgrm-version="14" style="margin:0; width:100%;">' +
+        '<a href="' + url + '" target="_blank" rel="noopener"></a>' +
+        '</blockquote>';
+      scroll.appendChild(card);
+    });
+
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.instagram.com/embed.js';
+    document.body.appendChild(s);
+  })();
+  </script>
 
   <hr class="rule">
 
