@@ -20,13 +20,19 @@ const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL;
 // the live preview, but every dollar figure that gets saved or emailed is
 // computed from THIS table, not from anything the client submitted.
 const PRODUCTS = {
-  Center_Tin: { label: 'Center — Tin', unitPrice: 20.00, caseSize: 32 },
-  Center_Singles: { label: 'Center — Singles', unitPrice: 5.00, caseSize: 40 },
-  Uplift_Tin: { label: 'Uplift — Tin', unitPrice: 20.00, caseSize: 32 },
-  Uplift_Singles: { label: 'Uplift — Singles', unitPrice: 5.00, caseSize: 40 },
-  Unwind_Tin: { label: 'Unwind — Tin', unitPrice: 20.00, caseSize: 32 },
-  Unwind_Singles: { label: 'Unwind — Singles', unitPrice: 5.00, caseSize: 40 },
-  Transcend_Tin: { label: 'Transcend — Tin', unitPrice: 31.00, caseSize: 32 },
+  Center_Tin:        { label: 'Center — 7pk Tin (3.5g)', unitPrice: 23.00, caseSize: 32 },
+  Uplift_Tin:        { label: 'Uplift — 7pk Tin (3.5g)', unitPrice: 23.00, caseSize: 32 },
+  Unwind_Tin:        { label: 'Unwind — 7pk Tin (3.5g)', unitPrice: 23.00, caseSize: 32 },
+  Transcend_Tin:     { label: 'Transcend — 7pk Hash-Infused Tin (3.5g)', unitPrice: 29.00, caseSize: 32 },
+  Center_Singles:    { label: 'Center — Single (0.5g)', unitPrice: 4.50, caseSize: 40 },
+  Uplift_Singles:    { label: 'Uplift — Single (0.5g)', unitPrice: 4.50, caseSize: 40 },
+  Unwind_Singles:    { label: 'Unwind — Single (0.5g)', unitPrice: 4.50, caseSize: 40 },
+  Transcend_Singles: { label: 'Transcend — Hash-Infused Single (0.5g)', unitPrice: 6.00, caseSize: 40 },
+  NYKC_Vape:         { label: 'Live Rosin Vape — NYKC (0.5g AIO)', unitPrice: 29.00, caseSize: 24 },
+  Papaya_Vape:       { label: 'Live Rosin Vape — Papaya (0.5g AIO)', unitPrice: 29.00, caseSize: 24 },
+  Center_Jar:        { label: 'Center — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
+  Uplift_Jar:        { label: 'Uplift — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
+  Unwind_Jar:        { label: 'Unwind — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
 };
 
 const COD_DISCOUNT_RATE = 0.10;
@@ -74,7 +80,7 @@ exports.handler = async (event) => {
     const lineTotal = units * product.unitPrice;
     subtotal += lineTotal;
     totalUnits += units;
-    lines.push({ key, label: product.label, caseQty, units, lineTotal });
+    lines.push({ key, label: product.label, caseQty, units, unitPrice: product.unitPrice, lineTotal });
   }
 
   if (lines.length === 0) {
@@ -123,6 +129,11 @@ exports.handler = async (event) => {
     });
   }
 
+  // --- Build the editable invoice (.doc = HTML that opens and edits in Word / Google Docs) ---
+  const invoiceNumber = `HPWE-${order.submittedAt.slice(0, 10).replace(/-/g, '')}-${(String(airtableRecordId || '').replace(/[^a-zA-Z0-9]/g, '').slice(-5) || String(Math.floor(Math.random() * 90000) + 10000)).toUpperCase()}`;
+  const invoiceHtml = buildInvoiceDoc(order, lines, invoiceNumber);
+  order.invoiceFilename = `HighPriestess-Invoice-${invoiceNumber}.doc`;
+
   // --- Step 2: redundant notifications. Best-effort — a notification failure does NOT fail the order. ---
   const notificationErrors = [];
 
@@ -146,6 +157,7 @@ exports.handler = async (event) => {
     success: true,
     message: `Order received — ${order.totalUnits} units, ${formatUSD(order.codTotal)} COD total (10% off). We will confirm shortly.`,
     recordId: airtableRecordId,
+    invoice: { number: invoiceNumber, filename: order.invoiceFilename, html: invoiceHtml },
   });
 };
 
@@ -267,6 +279,9 @@ async function sendEmailNotification(order) {
       to: NOTIFY_EMAIL,
       reply_to: order.buyerEmail,
       subject: `New wholesale order — ${order.dispensaryName}`,
+      attachments: order.invoiceHtml
+        ? [{ filename: order.invoiceFilename, content: Buffer.from(order.invoiceHtml).toString('base64') }]
+        : [],
       text: [
         `Dispensary: ${order.dispensaryName}`,
         `Dispensary License: ${order.dispensaryLicense}`,
@@ -295,4 +310,85 @@ async function sendSlackNotification(order) {
 }
 
 async function bestEffortSlackAlert(text) {
+}
+
+// --- Editable invoice generator ---
+// Returns Word-compatible HTML (saved/downloaded as .doc). Opens fully editable
+// in Microsoft Word and Google Docs. User-entered fields are HTML-escaped.
+
+function escapeHtml(v) {
+  return String(v == null ? '' : v)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function buildInvoiceDoc(order, lines, invoiceNumber) {
+  const dateStr = new Date(order.submittedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  const rows = lines.map((l) => `
+      <tr>
+        <td>${escapeHtml(l.label)}</td>
+        <td style="text-align:center">${l.caseQty}</td>
+        <td style="text-align:center">${l.units}</td>
+        <td style="text-align:right">${formatUSD(l.unitPrice)}</td>
+        <td style="text-align:right">${formatUSD(l.lineTotal)}</td>
+      </tr>`).join('');
+
+  return `<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<title>High Priestess Invoice ${escapeHtml(invoiceNumber)}</title>
+<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View></w:WordDocument></xml><![endif]-->
+<style>
+  body { font-family: Georgia, serif; color: #371F1D; margin: 40px; }
+  .brand { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #8EA4A8; font-family: Arial, sans-serif; }
+  h1 { font-family: Georgia, serif; font-size: 28px; font-weight: normal; letter-spacing: 2px; margin: 4px 0 2px; }
+  .meta { font-size: 12px; color: #857a6e; }
+  table { border-collapse: collapse; font-size: 13px; }
+  th { border-bottom: 2px solid #371F1D; text-align: left; padding: 6px 10px; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; font-family: Arial, sans-serif; }
+  td { border-bottom: 1px solid #DFD8CF; padding: 8px 10px; }
+  .totals { margin-top: 12px; }
+  .totals td { border: none; padding: 4px 10px; text-align: right; }
+  .totals .grand td { border-top: 2px solid #371F1D; font-weight: bold; font-size: 15px; }
+  .fine { margin-top: 28px; font-size: 11px; color: #857a6e; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="brand">High Priestess Herbal Wellness</div>
+<h1>Wholesale Invoice</h1>
+<div class="meta">${escapeHtml(invoiceNumber)} &nbsp;·&nbsp; ${escapeHtml(dateStr)}</div>
+
+<table style="margin-top: 24px;">
+  <tr>
+    <td style="border: none; padding: 2px 24px 2px 0; vertical-align: top;">
+      <strong>Bill to</strong><br>
+      ${escapeHtml(order.dispensaryName)}<br>
+      License: ${escapeHtml(order.dispensaryLicense)}<br>
+      ${order.dispensaryAddress ? escapeHtml(order.dispensaryAddress) + '<br>' : ''}
+      ${escapeHtml(order.buyerName)} · ${escapeHtml(order.buyerEmail)} · ${escapeHtml(order.buyerPhone)}
+    </td>
+    <td style="border: none; padding: 2px 0 2px 24px; vertical-align: top;">
+      <strong>From</strong><br>
+      High Priestess Herbal Wellness<br>
+      OCM-PROC-24-000215<br>
+      highpriestess.life · orders@highpriestess.life
+    </td>
+  </tr>
+</table>
+
+<table style="width: 100%; margin-top: 20px;">
+  <tr><th>Item</th><th style="text-align:center;">Cases</th><th style="text-align:center;">Units</th><th style="text-align:right;">Unit price</th><th style="text-align:right;">Line total</th></tr>
+  ${rows}
+</table>
+
+<table class="totals" style="width: 100%;">
+  <tr><td colspan="2">Subtotal (pre-tax): ${formatUSD(order.subtotal)}</td></tr>
+  <tr><td colspan="2">COD discount (10%): −${formatUSD(order.subtotal - order.codTotal)}</td></tr>
+  <tr class="grand"><td colspan="2">Total due (COD): ${formatUSD(order.codTotal)}</td></tr>
+</table>
+
+<p class="fine">Payment due on delivery — cash, check, or ACH. This invoice was generated from the hpw-ny.com order form; review and edit before sending. Delivery notes: ${escapeHtml(order.deliveryHours || '—')}</p>
+</body>
+</html>`;
 }

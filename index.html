@@ -1468,6 +1468,20 @@
   .of-status { font-size: 13px; letter-spacing: 0.04em; line-height: 1.6; }
   .of-status.success { color: var(--hp-green-deep); }
   .of-status.error { color: var(--ash); }
+  .of-status .invoice-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 16px;
+    border: 1px solid var(--hp-blue-deep);
+    color: var(--hp-blue-deep);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .of-status .invoice-link:hover { background: var(--hp-blue-bg); }
  
   @media (max-width: 760px) {
     .order-modal-scroll { padding: 40px 24px; }
@@ -1530,12 +1544,12 @@
   <!-- PREROLL SINGLES SECTION -->
 
 <div class="singles-section">
-  <div class="menu-subhead">Preroll Singles - 1pk <span class="subhead-meta">1 x 0.7g preroll, 0.7g per glass tube</span></div>
+  <div class="menu-subhead">Preroll Singles - 1pk <span class="subhead-meta">1 x 0.5g preroll, 0.5g per tube</span></div>
     <div class="singles-grid">
  
       <div class="single-card">
         <div style="width: 100%; height: 100%; background-color: white; color:white;">
-        <img style="transform: scaleY(0.85);" src="preroll_mock_center.png" height="100%" alt="Center — Peaches and Cream single preroll">
+        <img src="Tube_CENTER.png" alt="Center — Peaches and Cream single preroll tube" style="width:100%; height:100%; object-fit:contain; display:block;">
         </div>
         <div class="single-card-body">
           <div class="single-card-badge hybrid-badge">Hybrid Cannabis Preroll</div>
@@ -1544,14 +1558,14 @@
           <div class="single-card-footer">
             <a class="coa-link" href="COA_Center_Hybrid.pdf" target="_blank">↓ Full COA</a>
             <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
-            <span class="single-card-price">$5.00 <span class="unit-label">wholesale</span></span>
+            <span class="single-card-price">$4.50 <span class="unit-label">wholesale</span></span>
           </div>
         </div>
       </div>
  
       <div class="single-card">
         <div style="width: 100%; height: 100%; background-color: white; color:white;">
-          <img style="transform: scale(1.05, 0.94);" src="preroll_mock_uplift.png" alt="Uplift — Sour Nerds single preroll">
+          <img src="Tube_UPLIFT.png" alt="Uplift — Sour Nerds single preroll tube" style="width:100%; height:100%; object-fit:contain; display:block;">
         </div>
         <div class="single-card-body">
           <div class="single-card-badge sativa-badge">Sativa Cannabis Preroll</div>
@@ -1560,14 +1574,14 @@
           <div class="single-card-footer">
             <a class="coa-link" href="COA_Uplift_Sativa.pdf" target="_blank">↓ Full COA</a>
             <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
-            <span class="single-card-price">$5.00 <span class="unit-label">wholesale</span></span>
+            <span class="single-card-price">$4.50 <span class="unit-label">wholesale</span></span>
           </div>
         </div>
       </div>
  
       <div class="single-card">
         <div style="width: 100%; height: 100%; background-color: white; color:white;">
-          <img style=" transform: scaley(0.8);  margin: -2px 0 2px 0;" src="preroll_mock_unwind.png" alt="Unwind — 24 Karat Kush single preroll">
+          <img src="Tube_UNWIND.png" alt="Unwind — 24 Karat Kush single preroll tube" style="width:100%; height:100%; object-fit:contain; display:block;">
         </div>
         <div class="single-card-body">
           <div class="single-card-badge indica-badge">Indica Cannabis Preroll</div>
@@ -1576,7 +1590,7 @@
       <div class="single-card-footer">
         <a class="coa-link" href="COA_Unwind_Indica.pdf" target="_blank">↓ Full COA</a>
         <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
-        <span class="single-card-price">$5.00 <span class="unit-label">wholesale</span></span>
+        <span class="single-card-price">$4.50 <span class="unit-label">wholesale</span></span>
       </div>
     </div>
   </div>
@@ -1605,7 +1619,7 @@
             <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
           </div>
           </div>
-          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$20 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$23 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
         </div>
       </div>
     </div>
@@ -1625,7 +1639,7 @@
             <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
             </div>
           </div>
-          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$20 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$23 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
         </div>
       </div>
     </div>
@@ -1645,7 +1659,7 @@
            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
           </div>
           </div>
-          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$20 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--noir); letter-spacing:0.02em;">$23 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke-dark);">wholesale</span></span>
         </div>
       </div>
     </div>
@@ -1658,19 +1672,109 @@
         <div class="cs-name">Transcend</div>
         <div class="cs-tin" style="margin-bottom:16px;">Introspective · Deep · Expansive</div>
         <div class="cs-desc" style="font-size: 14px; line-height:1.8; color:rgba(223,216,207,0.92);">A premium upsell for customers already loyal to the core line — same trusted tin, hash-infused potency into premium whole flower, no shake or trim prerolls, higher price point and an even better journey.</div>
-        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(197,197,159,0.85); font-weight:500; margin-top:16px; margin-bottom:12px;">7 × 0.7g &nbsp;·&nbsp; 5g total &nbsp;·&nbsp; Whole flower + solventless hash</div>
+        <div style="font-size: 12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(197,197,159,0.85); font-weight:500; margin-top:16px; margin-bottom:12px;">7 × 0.5g &nbsp;·&nbsp; 3.5g total &nbsp;·&nbsp; Whole flower + solventless hash</div>
         <div style="display:flex; align-items:baseline; justify-content:space-between; padding-top:12px; border-top:1px solid rgba(197,197,159,0.15);">
           <div style="flex-direction: row;">
           <a class="coa-link" href="COA_Transcend_Hash_Infused.pdf" target="_blank" style="color:var(--hp-blue); border-color:var(--hp-blue);">↓ Full COA</a>
            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
           </div>
         </div>
-          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--smoke); letter-spacing:0.02em;">$31 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(197,197,159,0.8);">wholesale</span></span>
+          <span style="font-family:'Cormorant Garamond',serif; font-size: 2em; font-weight:400; color:var(--smoke); letter-spacing:0.02em;">$29 <span style="font-size: 14px; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(197,197,159,0.8);">wholesale</span></span>
         </div>
       </div>
     </div>
 
   </div>
+
+
+  <!-- EIGHTH JARS SECTION -->
+  <div class="singles-section">
+  <div class="menu-subhead">Whole Flower — Eighth Jars <span class="subhead-meta">3.5g per glass jar</span></div>
+    <div class="singles-grid">
+
+      <div class="single-card">
+        <div style="width: 100%; height: 100%; background-color: white; color:white;">
+        <img src="Jar_CENTER.png" alt="Center — Peaches and Cream eighth jar" style="width:100%; height:100%; object-fit:contain; display:block;">
+        </div>
+        <div class="single-card-body">
+          <div class="single-card-badge hybrid-badge">Hybrid Whole Flower · 3.5g</div>
+          <div class="single-card-name">Center</div>
+          <div class="single-card-strain">Strain: Peaches and Cream</div>
+          <div class="single-card-footer">
+            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
+            <span class="single-card-price">$27.50 <span class="unit-label">wholesale</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-card">
+        <div style="width: 100%; height: 100%; background-color: white; color:white;">
+        <img src="Jar_UPLIFT.png" alt="Uplift — Sour Nerds eighth jar" style="width:100%; height:100%; object-fit:contain; display:block;">
+        </div>
+        <div class="single-card-body">
+          <div class="single-card-badge sativa-badge">Sativa Whole Flower · 3.5g</div>
+          <div class="single-card-name">Uplift</div>
+          <div class="single-card-strain">Strain: Sour Nerds</div>
+          <div class="single-card-footer">
+            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
+            <span class="single-card-price">$27.50 <span class="unit-label">wholesale</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-card">
+        <div style="width: 100%; height: 100%; background-color: white; color:white;">
+        <img src="Jar_UNWIND.png" alt="Unwind — 24 Karat Kush eighth jar" style="width:100%; height:100%; object-fit:contain; display:block;">
+        </div>
+        <div class="single-card-body">
+          <div class="single-card-badge indica-badge">Indica Whole Flower · 3.5g</div>
+          <div class="single-card-name">Unwind</div>
+          <div class="single-card-strain">Strain: 24 Karat Kush</div>
+          <div class="single-card-footer">
+            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
+            <span class="single-card-price">$27.50 <span class="unit-label">wholesale</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <!-- LIVE ROSIN VAPES SECTION -->
+  <div class="singles-section">
+  <div class="menu-subhead">Live Rosin Vapes <span class="subhead-meta">100% live rosin · 0.5g all-in-one</span></div>
+    <div class="singles-grid">
+
+      <div class="single-card">
+        <div style="width: 100%; height: 100%; background-color: white; color:white;">
+        <img src="Vape_NYKC.png" alt="NYKC live rosin vape 0.5g AIO" style="width:100%; height:100%; object-fit:contain; display:block;">
+        </div>
+        <div class="single-card-body">
+          <div class="single-card-badge hybrid-badge">Live Rosin · 0.5g AIO</div>
+          <div class="single-card-name">NYKC</div>
+          <div class="single-card-strain">100% live rosin, no distillate</div>
+          <div class="single-card-footer">
+            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
+            <span class="single-card-price">$29.00 <span class="unit-label">wholesale</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-card">
+        <div style="width: 100%; height: 100%; background-color: white; color:white;">
+        <img src="Vape_PAPAYA.png" alt="Papaya live rosin vape 0.5g AIO" style="width:100%; height:100%; object-fit:contain; display:block;">
+        </div>
+        <div class="single-card-body">
+          <div class="single-card-badge sativa-badge">Live Rosin · 0.5g AIO</div>
+          <div class="single-card-name">Papaya</div>
+          <div class="single-card-strain">100% live rosin, no distillate</div>
+          <div class="single-card-footer">
+            <button type="button" class="coa-link open-order-modal-btn ">Order Now</button>
+            <span class="single-card-price">$29.00 <span class="unit-label">wholesale</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 
   <div class="discount-row">
     <div class="discount-flag">
@@ -1786,7 +1890,7 @@
     </div>
     <div class="contact-right">
       <div class="cta-note">
-        Live rosin vapes launch early September. New strains dropping soon.<br><br>
+        Live rosin vapes available now — NYKC and Papaya. New strains dropping soon.<br><br>
         New accounts get 5% off their first order. As a Tier 1 processor we have much more flexibility on our margins. Volume discounts of up to 20% are available — just ask. We also offer half-case sizes, reach out for more details. 
       </div>
       <div class="cta-highlight">
@@ -1833,121 +1937,230 @@
         </div>
  
         <div class="order-items">
-          <div class="oi-legend">7 Pack Preroll Tins<span class="oi-legend-sub">7 prerolls per tin — size varies by SKU</span><span class="oi-legend-sub">Case of 32 units</span></div>
- 
+          <div class="oi-legend">7 Pack Preroll Tins<span class="oi-legend-sub">7 × 0.5g prerolls · 3.5g per tin</span><span class="oi-legend-sub">Case of 32 units</span></div>
+
           <div class="oi-row">
             <div class="oi-info">
-              <img class="oi-thumb thumb-cover" src="Preroll_Tin_CENTER.jpg" alt="Center tin">
-              <div><span class="oi-name">Center</span>
+              <img class="oi-thumb thumb-cover" src="Preroll_Tin_CENTER.jpg" alt="Center">
+              <div>
+                <span class="oi-name">Center</span>
                 <span class="oi-description">Hybrid 7pk · 3.5g</span>
-                <span class="oi-price">$20.00 / unit</span></div>
+                <span class="oi-price">$23.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Center_Tin">
-                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10"> 10 cases</option>
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
               </select>
               <span class="oi-meta" data-meta="Center_Tin">0 units · $0.00</span>
             </div>
           </div>
- 
+
           <div class="oi-row">
             <div class="oi-info">
-              <img class="oi-thumb thumb-cover" src="Preroll_Tin_UPLIFT.jpg" alt="Uplift tin">
-              <div><span class="oi-name">Uplift</span>
+              <img class="oi-thumb thumb-cover" src="Preroll_Tin_UPLIFT.jpg" alt="Uplift">
+              <div>
+                <span class="oi-name">Uplift</span>
                 <span class="oi-description">Sativa 7pk · 3.5g</span>
-                <span class="oi-price">$20.00 / unit</span></div>
+                <span class="oi-price">$23.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Uplift_Tin">
-                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10"> 10 cases</option>
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
               </select>
               <span class="oi-meta" data-meta="Uplift_Tin">0 units · $0.00</span>
-            </div>          
+            </div>
           </div>
- 
+
           <div class="oi-row">
             <div class="oi-info">
-              <img class="oi-thumb thumb-cover" src="Preroll_Tin_UNWIND.jpg" alt="Unwind tin">
-              <div><span class="oi-name">Unwind</span>
+              <img class="oi-thumb thumb-cover" src="Preroll_Tin_UNWIND.jpg" alt="Unwind">
+              <div>
+                <span class="oi-name">Unwind</span>
                 <span class="oi-description">Indica 7pk · 3.5g</span>
-                <span class="oi-price">$20.00 / unit</span></div>
+                <span class="oi-price">$23.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Unwind_Tin">
-                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10"> 10 cases</option>
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
               </select>
               <span class="oi-meta" data-meta="Unwind_Tin">0 units · $0.00</span>
             </div>
           </div>
- 
+
           <div class="oi-row">
             <div class="oi-info">
-              <img class="oi-thumb thumb-cover" src="Preroll_Tin_TRANSCEND.jpg" alt="Transcend tin">
-              <div><span class="oi-name">Transcend</span>
-                <span class="oi-description">Hash infused 7pk · 5g</span>
-                <span class="oi-price">$31.00 / unit</span></div>
+              <img class="oi-thumb thumb-cover" src="Preroll_Tin_TRANSCEND.jpg" alt="Transcend">
+              <div>
+                <span class="oi-name">Transcend</span>
+                <span class="oi-description">Hash-Infused 7pk · 3.5g</span>
+                <span class="oi-price">$29.00 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Transcend_Tin">
-                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10"> 10 cases</option>
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
               </select>
               <span class="oi-meta" data-meta="Transcend_Tin">0 units · $0.00</span>
             </div>
           </div>
+
         </div>
- 
+
         <div class="order-items">
-          <div class="oi-legend">Preroll Singles<span class="oi-legend-sub">1 x 0.7g preroll · 0.7g/unit</span><span class="oi-legend-sub">Case of 40 units</span></div>
+          <div class="oi-legend">Preroll Singles<span class="oi-legend-sub">1 × 0.5g preroll · 0.5g/unit</span><span class="oi-legend-sub">Case of 40 units</span></div>
 
           <div class="oi-row">
             <div class="oi-info">
-              <img class="oi-thumb thumb-contain" src="preroll_mock_center.png" alt="Center single">
+              <img class="oi-thumb thumb-contain" src="Tube_CENTER.png" alt="Center">
               <div>
                 <span class="oi-name">Center</span>
-                <span class="oi-description">Hybrid Preroll</span>
-                <span class="oi-price">$5.00 / unit</span>
-            </div>
+                <span class="oi-description">Hybrid Single · 0.5g</span>
+                <span class="oi-price">$4.50 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Center_Singles">
-                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10"> 10 cases</option>
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
               </select>
               <span class="oi-meta" data-meta="Center_Singles">0 units · $0.00</span>
             </div>
           </div>
- 
+
           <div class="oi-row">
             <div class="oi-info">
-              <img class="oi-thumb thumb-contain" src="preroll_mock_uplift.png" alt="Uplift single">
-              <div><span class="oi-name">Uplift</span>
-                <span class="oi-description">Sativa Preroll</span>
-                <span class="oi-price">$5.00 / unit</span></div>
+              <img class="oi-thumb thumb-contain" src="Tube_UPLIFT.png" alt="Uplift">
+              <div>
+                <span class="oi-name">Uplift</span>
+                <span class="oi-description">Sativa Single · 0.5g</span>
+                <span class="oi-price">$4.50 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Uplift_Singles">
-                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10"> 10 cases</option>
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
               </select>
               <span class="oi-meta" data-meta="Uplift_Singles">0 units · $0.00</span>
             </div>
           </div>
- 
+
           <div class="oi-row">
             <div class="oi-info">
-              <img class="oi-thumb thumb-contain" src="preroll_mock_unwind.png" alt="Unwind single">
+              <img class="oi-thumb thumb-contain" src="Tube_UNWIND.png" alt="Unwind">
               <div>
                 <span class="oi-name">Unwind</span>
-                <span class="oi-description">Indica Preroll</span>
-                <span class="oi-price">$5.00 / unit</span></div>
+                <span class="oi-description">Indica Single · 0.5g</span>
+                <span class="oi-price">$4.50 / unit</span></div>
             </div>
             <div class="oi-control">
               <select class="oi-select order-qty" data-key="Unwind_Singles">
-                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10"> 10 cases</option>
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
               </select>
               <span class="oi-meta" data-meta="Unwind_Singles">0 units · $0.00</span>
             </div>
           </div>
+
+          <div class="oi-row">
+            <div class="oi-info">
+              <img class="oi-thumb thumb-contain" src="Preroll_Tin_TRANSCEND.jpg" alt="Transcend">
+              <div>
+                <span class="oi-name">Transcend</span>
+                <span class="oi-description">Hash-Infused Single · 0.5g</span>
+                <span class="oi-price">$6.00 / unit</span></div>
+            </div>
+            <div class="oi-control">
+              <select class="oi-select order-qty" data-key="Transcend_Singles">
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
+              </select>
+              <span class="oi-meta" data-meta="Transcend_Singles">0 units · $0.00</span>
+            </div>
+          </div>
+
         </div>
- 
+
+        <div class="order-items">
+          <div class="oi-legend">Live Rosin Vapes<span class="oi-legend-sub">0.5g all-in-one · 100% live rosin</span><span class="oi-legend-sub">Case of 24 units</span></div>
+
+          <div class="oi-row">
+            <div class="oi-info">
+              <img class="oi-thumb thumb-contain" src="Vape_NYKC.png" alt="NYKC">
+              <div>
+                <span class="oi-name">NYKC</span>
+                <span class="oi-description">Live Rosin AIO · 0.5g</span>
+                <span class="oi-price">$29.00 / unit</span></div>
+            </div>
+            <div class="oi-control">
+              <select class="oi-select order-qty" data-key="NYKC_Vape">
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
+              </select>
+              <span class="oi-meta" data-meta="NYKC_Vape">0 units · $0.00</span>
+            </div>
+          </div>
+
+          <div class="oi-row">
+            <div class="oi-info">
+              <img class="oi-thumb thumb-contain" src="Vape_PAPAYA.png" alt="Papaya">
+              <div>
+                <span class="oi-name">Papaya</span>
+                <span class="oi-description">Live Rosin AIO · 0.5g</span>
+                <span class="oi-price">$29.00 / unit</span></div>
+            </div>
+            <div class="oi-control">
+              <select class="oi-select order-qty" data-key="Papaya_Vape">
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
+              </select>
+              <span class="oi-meta" data-meta="Papaya_Vape">0 units · $0.00</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="order-items">
+          <div class="oi-legend">Eighth Jars<span class="oi-legend-sub">3.5g whole flower per jar</span><span class="oi-legend-sub">Case of 12 units</span></div>
+
+          <div class="oi-row">
+            <div class="oi-info">
+              <img class="oi-thumb thumb-contain" src="Jar_CENTER.png" alt="Center">
+              <div>
+                <span class="oi-name">Center</span>
+                <span class="oi-description">Hybrid Eighth Jar · 3.5g</span>
+                <span class="oi-price">$27.50 / unit</span></div>
+            </div>
+            <div class="oi-control">
+              <select class="oi-select order-qty" data-key="Center_Jar">
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
+              </select>
+              <span class="oi-meta" data-meta="Center_Jar">0 units · $0.00</span>
+            </div>
+          </div>
+
+          <div class="oi-row">
+            <div class="oi-info">
+              <img class="oi-thumb thumb-contain" src="Jar_UPLIFT.png" alt="Uplift">
+              <div>
+                <span class="oi-name">Uplift</span>
+                <span class="oi-description">Sativa Eighth Jar · 3.5g</span>
+                <span class="oi-price">$27.50 / unit</span></div>
+            </div>
+            <div class="oi-control">
+              <select class="oi-select order-qty" data-key="Uplift_Jar">
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
+              </select>
+              <span class="oi-meta" data-meta="Uplift_Jar">0 units · $0.00</span>
+            </div>
+          </div>
+
+          <div class="oi-row">
+            <div class="oi-info">
+              <img class="oi-thumb thumb-contain" src="Jar_UNWIND.png" alt="Unwind">
+              <div>
+                <span class="oi-name">Unwind</span>
+                <span class="oi-description">Indica Eighth Jar · 3.5g</span>
+                <span class="oi-price">$27.50 / unit</span></div>
+            </div>
+            <div class="oi-control">
+              <select class="oi-select order-qty" data-key="Unwind_Jar">
+                <option value="0">0</option><option value="1">1 case</option><option value="2">2 cases</option><option value="3">3 cases</option><option value="4">4 cases</option><option value="5">5 cases</option><option value="6">6 cases</option><option value="7">7 cases</option><option value="8">8 cases</option><option value="9">9 cases</option><option value="10">10 cases</option>
+              </select>
+              <span class="oi-meta" data-meta="Unwind_Jar">0 units · $0.00</span>
+            </div>
+          </div>
         <div class="order-summary">
           <div class="os-item">
             <span class="os-label" style="text-align:center;">With COD Discount</span>
@@ -2021,13 +2234,19 @@
   // Must mirror the PRODUCTS table in netlify/functions/submit-order.js —
   // this copy only drives the live preview; the server recomputes independently.
   const PRODUCTS = {
-    Center_Tin:      { unitPrice: 20.00, caseSize: 32 },
-    Center_Singles:  { unitPrice: 5.00,  caseSize: 40 },
-    Uplift_Tin:      { unitPrice: 20.00, caseSize: 32 },
-    Uplift_Singles:  { unitPrice: 5.00,  caseSize: 40 },
-    Unwind_Tin:      { unitPrice: 20.00, caseSize: 32 },
-    Unwind_Singles:  { unitPrice: 5.00,  caseSize: 40 },
-    Transcend_Tin:   { unitPrice: 31.00, caseSize: 32 },
+    Center_Tin:        { unitPrice: 23.00, caseSize: 32 },
+    Uplift_Tin:        { unitPrice: 23.00, caseSize: 32 },
+    Unwind_Tin:        { unitPrice: 23.00, caseSize: 32 },
+    Transcend_Tin:     { unitPrice: 29.00, caseSize: 32 },
+    Center_Singles:    { unitPrice: 4.50,  caseSize: 40 },
+    Uplift_Singles:    { unitPrice: 4.50,  caseSize: 40 },
+    Unwind_Singles:    { unitPrice: 4.50,  caseSize: 40 },
+    Transcend_Singles: { unitPrice: 6.00,  caseSize: 40 },
+    NYKC_Vape:         { unitPrice: 29.00, caseSize: 24 },
+    Papaya_Vape:       { unitPrice: 29.00, caseSize: 24 },
+    Center_Jar:        { unitPrice: 27.50, caseSize: 12 },
+    Uplift_Jar:        { unitPrice: 27.50, caseSize: 12 },
+    Unwind_Jar:        { unitPrice: 27.50, caseSize: 12 },
   };
  
   function formatUSD(n) {
@@ -2095,6 +2314,15 @@
  
       status.className = 'of-status success';
       status.textContent = result.message || 'Order received — we will confirm shortly.';
+      if (result.invoice && result.invoice.html) {
+        var invLink = document.createElement('a');
+        invLink.className = 'invoice-link';
+        invLink.textContent = '↓ Download invoice (.doc — editable)';
+        invLink.href = URL.createObjectURL(new Blob([result.invoice.html], { type: 'application/msword' }));
+        invLink.download = result.invoice.filename;
+        status.appendChild(document.createElement('br'));
+        status.appendChild(invLink);
+      }
       form.reset();
       recalc();
     } catch (err) {
