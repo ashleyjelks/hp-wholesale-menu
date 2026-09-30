@@ -28,14 +28,15 @@ const PRODUCTS = {
   Uplift_Singles:    { label: 'Uplift — Single (0.5g)', unitPrice: 4.50, caseSize: 40 },
   Unwind_Singles:    { label: 'Unwind — Single (0.5g)', unitPrice: 4.50, caseSize: 40 },
   Transcend_Singles: { label: 'Transcend — Hash-Infused Single (0.5g)', unitPrice: 6.00, caseSize: 40 },
-  NYKC_Vape:         { label: 'Live Rosin Vape — NYKC (0.5g AIO)', unitPrice: 29.00, caseSize: 24 },
-  Papaya_Vape:       { label: 'Live Rosin Vape — Papaya (0.5g AIO)', unitPrice: 29.00, caseSize: 24 },
+  NYKC_Vape:         { label: 'Live Rosin Vape — New York Kush Cake (0.5g All in One)', unitPrice: 29.00, caseSize: 24 },
+  Papaya_Vape:       { label: 'Live Rosin Vape — Papaya (0.5g All in One)', unitPrice: 29.00, caseSize: 24 },
   Center_Jar:        { label: 'Center — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
   Uplift_Jar:        { label: 'Uplift — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
   Unwind_Jar:        { label: 'Unwind — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
 };
 
 const COD_DISCOUNT_RATE = 0.10;
+const CASE_LIMIT = 8;
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -49,8 +50,8 @@ exports.handler = async (event) => {
     return jsonResponse(400, { error: 'Invalid request body' });
   }
 
-  // --- Server-side validation — everything required except deliveryHours and notes ---
-  const requiredFields = ['dispensaryName', 'dispensaryLicense', 'buyerName', 'buyerEmail', 'buyerPhone'];
+  // --- Server-side validation — only dispensary name, buyer name, and buyer email are required ---
+  const requiredFields = ['dispensaryName', 'buyerName', 'buyerEmail'];
   const missing = requiredFields.filter((f) => !data[f] || String(data[f]).trim() === '');
   if (missing.length) {
     return jsonResponse(400, { error: `Missing required field(s): ${missing.join(', ')}` });
@@ -70,8 +71,8 @@ exports.handler = async (event) => {
 
   for (const key of Object.keys(PRODUCTS)) {
     const caseQty = Number(rawItems[key]);
-    if (!Number.isInteger(caseQty) || caseQty < 0 || caseQty > 10) {
-      return jsonResponse(400, { error: `Invalid case quantity for ${key} (must be a whole number 0–10)` });
+    if (!Number.isInteger(caseQty) || caseQty < 0 || caseQty > CASE_LIMIT) {
+      return jsonResponse(400, { error: `Invalid case quantity for ${key} (must be a whole number 0–${CASE_LIMIT})` });
     }
     if (caseQty === 0) continue;
 
@@ -87,17 +88,22 @@ exports.handler = async (event) => {
     return jsonResponse(400, { error: 'Order must include at least one item with a case quantity greater than 0' });
   }
 
+  const totalCases = lines.reduce((t, l) => t + l.caseQty, 0);
+  if (totalCases > CASE_LIMIT) {
+    return jsonResponse(400, { error: `Order limit is ${CASE_LIMIT} cases per purchase (you submitted ${totalCases})` });
+  }
+
   const codTotal = subtotal * (1 - COD_DISCOUNT_RATE);
   const summaryLine = lines.map((l) => `${l.label}: ${l.caseQty} case${l.caseQty > 1 ? 's' : ''} (${l.units} units)`).join(', ');
   const submittedAt = new Date().toISOString();
 
   const order = {
     dispensaryName: data.dispensaryName.trim(),
-    dispensaryLicense: data.dispensaryLicense.trim(),
-    dispensaryAddress: data.dispensaryAddress.trim(),
+    dispensaryLicense: (data.dispensaryLicense || '').trim(),
+    dispensaryAddress: (data.dispensaryAddress || '').trim(),
     buyerName: data.buyerName.trim(),
     buyerEmail: data.buyerEmail.trim(),
-    buyerPhone: data.buyerPhone.trim(),
+    buyerPhone: (data.buyerPhone || '').trim(),
     deliveryHours: (data.deliveryHours || '').trim(),
     notes: (data.notes || '').trim(),
     summaryLine,
@@ -284,9 +290,9 @@ async function sendEmailNotification(order) {
         : [],
       text: [
         `Dispensary: ${order.dispensaryName}`,
-        `Dispensary License: ${order.dispensaryLicense}`,
-        `Dispensary Address: ${order.dispensaryAddress}`,
-        `Buyer: ${order.buyerName} (${order.buyerEmail}, ${order.buyerPhone})`,
+        order.dispensaryLicense ? `Dispensary License: ${order.dispensaryLicense}` : null,
+        order.dispensaryAddress ? `Dispensary Address: ${order.dispensaryAddress}` : null,
+        `Buyer: ${order.buyerName} (${[order.buyerEmail, order.buyerPhone].filter(Boolean).join(', ')})`,
         order.deliveryHours ? `Delivery hours: ${order.deliveryHours}` : null,
         '',
         `Order: ${order.summaryLine}`,
@@ -364,9 +370,9 @@ function buildInvoiceDoc(order, lines, invoiceNumber) {
     <td style="border: none; padding: 2px 24px 2px 0; vertical-align: top;">
       <strong>Bill to</strong><br>
       ${escapeHtml(order.dispensaryName)}<br>
-      License: ${escapeHtml(order.dispensaryLicense)}<br>
+      ${order.dispensaryLicense ? 'License: ' + escapeHtml(order.dispensaryLicense) + '<br>' : ''}
       ${order.dispensaryAddress ? escapeHtml(order.dispensaryAddress) + '<br>' : ''}
-      ${escapeHtml(order.buyerName)} · ${escapeHtml(order.buyerEmail)} · ${escapeHtml(order.buyerPhone)}
+      ${escapeHtml(order.buyerName)} · ${escapeHtml(order.buyerEmail)}${order.buyerPhone ? ' · ' + escapeHtml(order.buyerPhone) : ''}
     </td>
     <td style="border: none; padding: 2px 0 2px 24px; vertical-align: top;">
       <strong>From</strong><br>
