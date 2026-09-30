@@ -33,7 +33,7 @@ const PRODUCTS = {
   Unwind_Singles:    { label: 'Unwind — Single (0.5g)', unitPrice: 4.50, caseSize: 40 },
   Transcend_Singles: { label: 'Transcend — Hash-Infused Single (0.5g)', unitPrice: 6.00, caseSize: 40 },
   NYKC_Vape:         { label: 'Live Rosin Vape — New York Kush Cake (Sativa-Leaning Hybrid · 0.5g All in One)', unitPrice: 29.00, caseSize: 24 },
-  Papaya_Vape:       { label: 'Live Rosin Vape — Papaya Bomb (Indica · 0.5g All in One)', unitPrice: 29.00, caseSize: 24 },
+  Papaya_Vape:       { label: 'Live Rosin Vape — Papaya Bomb (Indica-Leaning Hybrid · 0.5g All in One)', unitPrice: 29.00, caseSize: 24 },
   Center_Jar:        { label: 'Center — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
   Uplift_Jar:        { label: 'Uplift — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
   Unwind_Jar:        { label: 'Unwind — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
