@@ -29,7 +29,7 @@ const PRODUCTS = {
   Unwind_Singles:    { label: 'Unwind — Single (0.5g)', unitPrice: 4.50, caseSize: 40 },
   Transcend_Singles: { label: 'Transcend — Hash-Infused Single (0.5g)', unitPrice: 6.00, caseSize: 40 },
   NYKC_Vape:         { label: 'Live Rosin Vape — New York Kush Cake (0.5g All in One)', unitPrice: 29.00, caseSize: 24 },
-  Papaya_Vape:       { label: 'Live Rosin Vape — Papaya (0.5g All in One)', unitPrice: 29.00, caseSize: 24 },
+  Papaya_Vape:       { label: 'Live Rosin Vape — Papaya Bomb (0.5g All in One)', unitPrice: 29.00, caseSize: 24 },
   Center_Jar:        { label: 'Center — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
   Uplift_Jar:        { label: 'Uplift — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
   Unwind_Jar:        { label: 'Unwind — Eighth Jar (3.5g)', unitPrice: 27.50, caseSize: 12 },
@@ -389,12 +389,14 @@ function buildInvoiceDoc(order, lines, invoiceNumber) {
 </table>
 
 <table class="totals" style="width: 100%;">
-  <tr><td colspan="2">Subtotal (pre-tax): ${formatUSD(order.subtotal)}</td></tr>
+  <tr><td colspan="2">Subtotal (Net 30 standard): ${formatUSD(order.subtotal)}</td></tr>
+  <tr><td colspan="2">Net 15 payment (5% off): ${formatUSD(order.subtotal * 0.95)}</td></tr>
   <tr><td colspan="2">COD discount (10%): −${formatUSD(order.subtotal - order.codTotal)}</td></tr>
-  <tr class="grand"><td colspan="2">Total due (COD): ${formatUSD(order.codTotal)}</td></tr>
+  <tr class="grand"><td colspan="2">Total due on delivery (COD): ${formatUSD(order.codTotal)}</td></tr>
+  <tr><td colspan="2" style="font-weight: 700; color: #2E5A47;">You save ${formatUSD(order.subtotal - order.codTotal)} with COD vs Net 30.</td></tr>
 </table>
 
-<p class="fine">Payment due on delivery — cash, check, or ACH. This invoice was generated from the hpw-ny.com order form; review and edit before sending. Delivery notes: ${escapeHtml(order.deliveryHours || '—')}</p>
+<p class="fine">Payment terms: COD saves 10% vs standard Net 30; Net 15 saves 5%; first orders save 5%. Payment due on delivery — cash, check, or ACH. This invoice was generated from the hpw-ny.com order form; review and edit before sending. Delivery notes: ${escapeHtml(order.deliveryHours || '—')}</p>
 </body>
 </html>`;
 }
