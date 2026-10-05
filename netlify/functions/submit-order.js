@@ -143,6 +143,7 @@ exports.handler = async (event) => {
   const invoiceNumber = `HPWE-${order.submittedAt.slice(0, 10).replace(/-/g, '')}-${(String(airtableRecordId || '').replace(/[^a-zA-Z0-9]/g, '').slice(-5) || String(Math.floor(Math.random() * 90000) + 10000)).toUpperCase()}`;
   const invoiceHtml = buildInvoiceDoc(order, lines, invoiceNumber);
   order.invoiceFilename = `HighPriestess-Invoice-${invoiceNumber}.doc`;
+  order.invoiceHtml = invoiceHtml; // attached to the internal notification email only — never sent to the client
 
   // --- Step 2: redundant notifications. Best-effort — a notification failure does NOT fail the order. ---
   const notificationErrors = [];
@@ -167,7 +168,8 @@ exports.handler = async (event) => {
     success: true,
     message: `Order received — ${order.totalUnits} units, ${formatUSD(order.codTotal)} COD total (10% off). We will confirm shortly.`,
     recordId: airtableRecordId,
-    invoice: { number: invoiceNumber, filename: order.invoiceFilename, html: invoiceHtml },
+    // Invoice is NOT included in the response — it goes only to the internal
+    // notification email. Clients never receive a downloadable invoice.
   });
 };
 

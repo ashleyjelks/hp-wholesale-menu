@@ -1468,20 +1468,6 @@
   .of-status { font-size: 13px; letter-spacing: 0.04em; line-height: 1.6; }
   .of-status.success { color: var(--hp-green-deep); }
   .of-status.error { color: var(--ash); }
-  .of-status .invoice-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 16px;
-    border: 1px solid var(--hp-blue-deep);
-    color: var(--hp-blue-deep);
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .of-status .invoice-link:hover { background: var(--hp-blue-bg); }
   .case-limit-note {
     font-size: 11px;
     letter-spacing: 0.18em;
@@ -2478,15 +2464,6 @@
  
       status.className = 'of-status success';
       status.textContent = result.message || 'Order received — we will confirm shortly.';
-      if (result.invoice && result.invoice.html) {
-        var invLink = document.createElement('a');
-        invLink.className = 'invoice-link';
-        invLink.textContent = '↓ Download invoice (.doc — editable)';
-        invLink.href = URL.createObjectURL(new Blob([result.invoice.html], { type: 'application/msword' }));
-        invLink.download = result.invoice.filename;
-        status.appendChild(document.createElement('br'));
-        status.appendChild(invLink);
-      }
       form.reset();
       recalc();
     } catch (err) {
