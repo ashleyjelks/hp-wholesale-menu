@@ -34,12 +34,13 @@ const PRODUCTS = {
   Transcend_Singles: { label: 'Transcend — Hash-Infused Single (0.5g)', unitPrice: 6.00, caseSize: 24 },
   NYKC_Vape:         { label: 'Live Rosin Vape — New York Kush Cake (Sativa-Leaning Hybrid · 0.5g All in One)', unitPrice: 29.00, caseSize: 16 },
   Papaya_Vape:       { label: 'Live Rosin Vape — Papaya Bomb (Indica-Leaning Hybrid · 0.5g All in One)', unitPrice: 29.00, caseSize: 16 },
-  Center_Jar:        { label: 'Center — Eighth Jar (3.5g)', unitPrice: 24.00, caseSize: 16 },
-  Uplift_Jar:        { label: 'Uplift — Eighth Jar (3.5g)', unitPrice: 24.00, caseSize: 16 },
-  Unwind_Jar:        { label: 'Unwind — Eighth Jar (3.5g)', unitPrice: 24.00, caseSize: 16 },
+  Center_Jar:        { label: 'Center — Eighth Jar (3.5g)', unitPrice: 25.00, caseSize: 16 },
+  Uplift_Jar:        { label: 'Uplift — Eighth Jar (3.5g)', unitPrice: 25.00, caseSize: 16 },
+  Unwind_Jar:        { label: 'Unwind — Eighth Jar (3.5g)', unitPrice: 25.00, caseSize: 16 },
 };
 
-const COD_DISCOUNT_RATE = 0.10;
+const GREEN_WEDNESDAY_RATE = 0.20; // 20% off every order, all November 2026
+const COD_DISCOUNT_RATE = 0.25;   // 25% off all COD orders during the promo
 const CASE_LIMIT = 8;
 
 exports.handler = async (event) => {
@@ -71,6 +72,7 @@ exports.handler = async (event) => {
   // --- Recompute everything server-side from the PRODUCTS table ---
   const lines = [];
   let subtotal = 0;
+  let listSubtotal = 0;
   let totalUnits = 0;
 
   for (const key of Object.keys(PRODUCTS)) {
@@ -82,10 +84,14 @@ exports.handler = async (event) => {
 
     const product = PRODUCTS[key];
     const units = caseQty * product.caseSize;
-    const lineTotal = units * product.unitPrice;
+    const listPrice = product.unitPrice;
+    const unitPrice = Number((listPrice * (1 - GREEN_WEDNESDAY_RATE)).toFixed(2));
+    const lineTotal = Number((units * unitPrice).toFixed(2));
+    const listLineTotal = Number((units * listPrice).toFixed(2));
     subtotal += lineTotal;
+    listSubtotal += listLineTotal;
     totalUnits += units;
-    lines.push({ key, label: product.label, caseQty, units, unitPrice: product.unitPrice, lineTotal });
+    lines.push({ key, label: product.label, caseQty, units, unitPrice, listPrice, lineTotal, listLineTotal });
   }
 
   if (lines.length === 0) {
@@ -97,7 +103,7 @@ exports.handler = async (event) => {
     return jsonResponse(400, { error: `Order limit is ${CASE_LIMIT} cases per purchase (you submitted ${totalCases})` });
   }
 
-  const codTotal = subtotal * (1 - COD_DISCOUNT_RATE);
+  const codTotal = Number((listSubtotal * (1 - COD_DISCOUNT_RATE)).toFixed(2));
   const summaryLine = lines.map((l) => `${l.label}: ${l.caseQty} case${l.caseQty > 1 ? 's' : ''} (${l.units} units)`).join(', ');
   const submittedAt = new Date().toISOString();
 
@@ -114,6 +120,7 @@ exports.handler = async (event) => {
     itemsJson: JSON.stringify(Object.fromEntries(lines.map((l) => [l.key, l.caseQty]))),
     totalUnits,
     subtotal,
+    listSubtotal,
     codTotal,
     submittedAt,
   };
@@ -166,7 +173,7 @@ exports.handler = async (event) => {
 
   return jsonResponse(200, {
     success: true,
-    message: `Order received — ${order.totalUnits} units, ${formatUSD(order.codTotal)} COD total (10% off). We will confirm shortly.`,
+    message: `Order received — ${order.totalUnits} units, ${formatUSD(order.subtotal)} after Green Wednesday 20%, or ${formatUSD(order.codTotal)} with the 25% COD discount. We will confirm shortly.`,
     recordId: airtableRecordId,
     // Invoice is NOT included in the response — it goes only to the internal
     // notification email. Clients never receive a downloadable invoice.
@@ -259,8 +266,9 @@ async function writeToAirtable(order) {
         'Order Summary': order.summaryLine,
         'Order Items (JSON)': order.itemsJson,
         'Total Units': order.totalUnits,
-        'Subtotal (Pre-Tax)': Number(order.subtotal.toFixed(2)),
-        'COD Total (10% Discount)': Number(order.codTotal.toFixed(2)),
+        'Menu Subtotal (Pre-Promo)': Number(order.listSubtotal.toFixed(2)),
+        'Subtotal (Green Wednesday 20%)': Number(order.subtotal.toFixed(2)),
+        'COD Total (25% Discount)': Number(order.codTotal.toFixed(2)),
         Notes: order.notes,
         Status: 'New',
         'Submitted At': order.submittedAt,
@@ -303,8 +311,10 @@ async function sendEmailNotification(order) {
         '',
         `Order: ${order.summaryLine}`,
         `Total units: ${order.totalUnits}`,
-        `Subtotal (pre-tax): ${formatUSD(order.subtotal)}`,
-        `COD total (10% discount applied): ${formatUSD(order.codTotal)}`,
+        `Menu subtotal: ${formatUSD(order.listSubtotal)}`,
+        `Green Wednesday 20% off: −${formatUSD(order.listSubtotal - order.subtotal)}`,
+        `November total: ${formatUSD(order.subtotal)}`,
+        `COD total (25% discount applied): ${formatUSD(order.codTotal)}`,
         '',
         order.notes ? `Notes: ${order.notes}` : null,
         `Submitted: ${order.submittedAt}`,
@@ -395,11 +405,12 @@ function buildInvoiceDoc(order, lines, invoiceNumber) {
 </table>
 
 <table class="totals" style="width: 100%;">
-  <tr><td colspan="2">Subtotal (Net 30 standard): ${formatUSD(order.subtotal)}</td></tr>
-  <tr><td colspan="2">Net 15 payment (5% off): ${formatUSD(order.subtotal * 0.95)}</td></tr>
-  <tr><td colspan="2">COD discount (10%): −${formatUSD(order.subtotal - order.codTotal)}</td></tr>
+  <tr><td colspan="2">Menu subtotal: ${formatUSD(order.listSubtotal)}</td></tr>
+  <tr><td colspan="2">Green Wednesday 20% off: −${formatUSD(order.listSubtotal - order.subtotal)}</td></tr>
+  <tr><td colspan="2">November total (Net 30): ${formatUSD(order.subtotal)}</td></tr>
+  <tr><td colspan="2">COD discount (25%): −${formatUSD(order.listSubtotal - order.codTotal)}</td></tr>
   <tr class="grand"><td colspan="2">Total due on delivery (COD): ${formatUSD(order.codTotal)}</td></tr>
-  <tr><td colspan="2" style="font-weight: 700; color: #2E5A47;">You save ${formatUSD(order.subtotal - order.codTotal)} with COD vs Net 30.</td></tr>
+  <tr><td colspan="2" style="font-weight: 700; color: #2E5A47;">You save ${formatUSD(order.listSubtotal - order.codTotal)} against the menu with COD.</td></tr>
 </table>
 
 <p class="fine">Payment terms: COD saves 10% vs standard Net 30; Net 15 saves 5%; first orders save 5%. Payment due on delivery — cash, check, or ACH. This invoice was generated from the hpw-ny.com order form; review and edit before sending. Delivery notes: ${escapeHtml(order.deliveryHours || '—')}</p>
