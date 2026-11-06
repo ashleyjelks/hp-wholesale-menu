@@ -27,7 +27,6 @@ const PRODUCTS = {
   Center_Tin14:      { label: 'Center — 14pk Hybrid Dogwalker Tin (4.9g)', unitPrice: 31.00, caseSize: 24 },
   Uplift_Tin14:      { label: 'Uplift — 14pk Sativa Dogwalker Tin (4.9g)', unitPrice: 31.00, caseSize: 24 },
   Unwind_Tin14:      { label: 'Unwind — 14pk Indica Dogwalker Tin (4.9g)', unitPrice: 31.00, caseSize: 24 },
-  Transcend_Tin14:   { label: 'Transcend — 14pk Hash-Infused Dogwalker Tin (4.9g)', unitPrice: 36.00, caseSize: 24 },
   Center_Singles:    { label: 'Center — Single (0.5g)', unitPrice: 4.50, caseSize: 24 },
   Uplift_Singles:    { label: 'Uplift — Single (0.5g)', unitPrice: 4.50, caseSize: 24 },
   Unwind_Singles:    { label: 'Unwind — Single (0.5g)', unitPrice: 4.50, caseSize: 24 },
