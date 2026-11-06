@@ -20,10 +20,10 @@ const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL;
 // the live preview, but every dollar figure that gets saved or emailed is
 // computed from THIS table, not from anything the client submitted.
 const PRODUCTS = {
-  Center_Tin:        { label: 'Center — 7pk Tin (3.5g)', unitPrice: 23.00, caseSize: 24 },
-  Uplift_Tin:        { label: 'Uplift — 7pk Tin (3.5g)', unitPrice: 23.00, caseSize: 24 },
-  Unwind_Tin:        { label: 'Unwind — 7pk Tin (3.5g)', unitPrice: 23.00, caseSize: 24 },
-  Transcend_Tin:     { label: 'Transcend — 7pk Hash-Infused Tin (3.5g)', unitPrice: 29.00, caseSize: 24 },
+  Center_Tin:        { label: 'Center — 7pk Tin (3.5g)', unitPrice: 24.00, caseSize: 24 },
+  Uplift_Tin:        { label: 'Uplift — 7pk Tin (3.5g)', unitPrice: 24.00, caseSize: 24 },
+  Unwind_Tin:        { label: 'Unwind — 7pk Tin (3.5g)', unitPrice: 24.00, caseSize: 24 },
+  Transcend_Tin:     { label: 'Transcend — 7pk Hash-Infused Tin (3.5g)', unitPrice: 30.00, caseSize: 24 },
   Center_Tin14:      { label: 'Center — 14pk Hybrid Dogwalker Tin (4.9g)', unitPrice: 31.00, caseSize: 24 },
   Uplift_Tin14:      { label: 'Uplift — 14pk Sativa Dogwalker Tin (4.9g)', unitPrice: 31.00, caseSize: 24 },
   Unwind_Tin14:      { label: 'Unwind — 14pk Indica Dogwalker Tin (4.9g)', unitPrice: 31.00, caseSize: 24 },
