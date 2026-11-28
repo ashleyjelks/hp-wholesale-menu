@@ -1178,25 +1178,27 @@
   .order-summary {
     background: var(--noir);
     color: var(--smoke);
-    padding: 26px 20px;
+    padding: 26px 22px;
     display: grid;
-    grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
     margin-bottom: 30px;
   }
  
-  .order-summary-divider { background: rgba(223,216,207,0.12); margin: 0 12px; }
+  .order-summary-divider { background: rgba(223,216,207,0.12); margin: 0 14px; }
  
   .os-item { text-align: center; padding: 8px 0; }
  
+  .os-item { text-align: center; padding: 4px 0; }
+
   .os-label {
     font-size: 10px;
     letter-spacing: 0.1em;
+    line-height: 1.5;
     text-transform: uppercase;
     color: var(--portal);
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 9px;
     display: block;
-    white-space: nowrap;
   }
  
   .os-value {
@@ -1205,7 +1207,9 @@
     font-weight: 400;
     line-height: 1;
     letter-spacing: 0.02em;
+    white-space: nowrap;
   }
+  .os-item-lead .os-value { color: #ffffff; }
  
   .of-submit-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
  
@@ -1437,25 +1441,27 @@
   .order-summary {
     background: var(--noir);
     color: var(--smoke);
-    padding: 26px 20px;
+    padding: 26px 22px;
     display: grid;
-    grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
     margin-bottom: 30px;
   }
  
-  .order-summary-divider { background: rgba(223,216,207,0.12); margin: 0 12px; }
+  .order-summary-divider { background: rgba(223,216,207,0.12); margin: 0 14px; }
  
   .os-item { text-align: center; padding: 8px 0; }
  
+  .os-item { text-align: center; padding: 4px 0; }
+
   .os-label {
     font-size: 10px;
     letter-spacing: 0.1em;
+    line-height: 1.5;
     text-transform: uppercase;
     color: var(--portal);
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 9px;
     display: block;
-    white-space: nowrap;
   }
  
   .os-value {
@@ -1464,7 +1470,9 @@
     font-weight: 400;
     line-height: 1;
     letter-spacing: 0.02em;
+    white-space: nowrap;
   }
+  .os-item-lead .os-value { color: #ffffff; }
  
   .of-submit-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
  
@@ -2364,23 +2372,18 @@
           </div>
         <div class="order-summary">
           <div class="os-item">
-            <span class="os-label" style="text-align:center;">Menu subtotal</span>
+            <span class="os-label">Pre-Discount Subtotal</span>
             <span class="os-value" id="os-subtotal">$0.00</span>
           </div>
           <div class="order-summary-divider"></div>
-          <div class="os-item">
-            <span class="os-label" style="text-align:center;">Green Wednesday 20% off</span>
-            <span class="os-value" id="os-savings">$0.00</span>
-          </div>
-          <div class="order-summary-divider"></div>
-          <div class="os-item">
-            <span class="os-label" style="text-align:center;">November total (Net 30)</span>
-            <span class="os-value" id="os-nov-total">$0.00</span>
-          </div>
-          <div class="order-summary-divider"></div>
-          <div class="os-item">
-            <span class="os-label" style="text-align:center;">COD total (25% off)</span>
+          <div class="os-item os-item-lead">
+            <span class="os-label">Nov Promo w/COD 25%</span>
             <span class="os-value" id="os-cod-total">$0.00</span>
+          </div>
+          <div class="order-summary-divider"></div>
+          <div class="os-item">
+            <span class="os-label">Nov Promo 20%</span>
+            <span class="os-value" id="os-nov-total">$0.00</span>
           </div>
         </div>
  
@@ -2489,10 +2492,12 @@
     });
     const promoTotal = subtotal * (1 - GREEN_WEDNESDAY_RATE);
     const codTotal = subtotal * (1 - COD_RATE);
-    document.getElementById('os-subtotal').textContent = formatUSD(subtotal);
-    document.getElementById('os-savings').textContent = '−' + formatUSD(subtotal - promoTotal);
-    document.getElementById('os-nov-total').textContent = formatUSD(promoTotal);
-    document.getElementById('os-cod-total').textContent = formatUSD(codTotal);
+    var elSub = document.getElementById('os-subtotal');
+    var elNov = document.getElementById('os-nov-total');
+    var elCod = document.getElementById('os-cod-total');
+    if (elSub) elSub.textContent = formatUSD(subtotal);
+    if (elNov) elNov.textContent = formatUSD(promoTotal);
+    if (elCod) elCod.textContent = formatUSD(codTotal);
   }
  
   var CASE_LIMIT = 8;
