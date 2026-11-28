@@ -42,7 +42,6 @@ const PRODUCTS = {
 
 const GREEN_WEDNESDAY_RATE = 0.20; // 20% off every order, all November 2026
 const COD_DISCOUNT_RATE = 0.25;   // 25% off all COD orders during the promo
-const CASE_LIMIT = 8;
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -78,8 +77,8 @@ exports.handler = async (event) => {
 
   for (const key of Object.keys(PRODUCTS)) {
     const caseQty = Number(rawItems[key]);
-    if (!Number.isInteger(caseQty) || caseQty < 0 || caseQty > CASE_LIMIT) {
-      return jsonResponse(400, { error: `Invalid case quantity for ${key} (must be a whole number 0–${CASE_LIMIT})` });
+    if (!Number.isInteger(caseQty) || caseQty < 0) {
+      return jsonResponse(400, { error: `Invalid case quantity for ${key} (must be a whole number of 0 or more)` });
     }
     if (caseQty === 0) continue;
 
@@ -100,10 +99,6 @@ exports.handler = async (event) => {
   }
 
   const totalCases = lines.reduce((t, l) => t + l.caseQty, 0);
-  if (totalCases > CASE_LIMIT) {
-    return jsonResponse(400, { error: `Order limit is ${CASE_LIMIT} cases per purchase (you submitted ${totalCases})` });
-  }
-
   const codTotal = Number((listSubtotal * (1 - COD_DISCOUNT_RATE)).toFixed(2));
   const summaryLine = lines.map((l) => `${l.label}: ${l.caseQty} case${l.caseQty > 1 ? 's' : ''} (${l.units} units)`).join(', ');
   const submittedAt = new Date().toISOString();
